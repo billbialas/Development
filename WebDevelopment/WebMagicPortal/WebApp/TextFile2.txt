@@ -1,0 +1,3 @@
+﻿<td><asp:CheckBox ID="autppost" Runat="server" AutoPostBack=True OnCheckedChanged="autopost_Click" /></td>
+				  			  				<td>Autopost&nbsp&nbsp<sup><img src="images/info2.gif" border=0></sup></td>
+	                    

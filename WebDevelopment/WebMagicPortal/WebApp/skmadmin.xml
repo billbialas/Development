@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<menu>
+	<menuItem>
+  		<text>Website</text> 
+   	<url>default.aspx</url>
+	</menuItem>
+	<menuItem>
+  		<text>My Space</text>
+  		<url>forms.aspx</url>
+  		<subMenu>
+  			<menuItem>
+     			<text>Log Out</text> 
+     			<url>logout.aspx</url> 
+    		</menuItem>
+    	</subMenu>
+	</menuItem>
+ 	<menuItem>
+ 		<text>Users</text>
+    	<roles>Administrator</roles>
+    	<roles>agent</roles>
+  		<url>sysusermaint.aspx</url> 
+ 	</menuItem>
+ 	<menuItem>
+ 		<text>Company</text>
+    	<roles>Administrator</roles>
+  		<url>syscompanymaint.aspx</url> 
+ 	</menuItem>
+ 	
+</menu> 

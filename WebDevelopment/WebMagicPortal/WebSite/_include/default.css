@@ -1,0 +1,327 @@
+/* default styles */
+.span_half{width:350px;margin-right:5px;float:left;margin-left:30;}
+.span_halfA{width:600px;height:400px;}
+
+
+#PG_BackGround {width:100%; float:left; background:#ffffff; padding-top:5px;height:500px;}
+#PG_BackGround .content {width:1250px; background: #ffffff ; border: 0px solid #000000; padding-top:10px; height:490px; margin-left: 10;}
+#PG_BackGround .content .sub-heading {width:60px; padding: 2px; background: #ffffff  no-repeat  ; margin-left: 0; margin-top:0;float:left;height:460px; }
+#PG_BackGround .content .sub-heading h2{
+		padding: 10px;
+		margin: 0;
+		color: #ffffff;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 140%;
+		border-bottom: 0px solid #000000;}
+
+#PG_BackGround .content .sub-headingA{width:550px; height: 450px;padding: 2px; background: #ffffff no-repeat  ; margin-left: 15; margin-top:0;float:left;border: 1px solid #000000;}
+#PG_BackGround .content .sub-headingA h2{
+		padding: 4px;
+		margin: 0;
+		color: #ffffff;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 120%;
+			border-bottom: 0px solid #ccc;
+		font-variant: small-caps;
+		background: #236B9E no-repeat  ;
+}
+#PG_BackGround .content .sub-headingA h5{
+		padding: 4px;
+		margin: 0;
+		color: #ffffff;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 120%;
+			border-bottom: 0px solid #ccc;
+		font-variant: small-caps;
+		background: #ff0000 no-repeat  ;
+}
+
+#PG_BackGround .content .sub-headingA h3{
+		padding: 5px;
+		margin: 0;
+		color: #fffffff;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 90%;
+}
+#PG_BackGround .content .sub-headingA h4 {
+		padding: 0px;
+		margin-left: 20;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 120%;
+		
+}
+#PG_BackGround .content .sub-detail {margin: 0; padding: 0px; background: url(../images/bk1.jpg) no-repeat ; width:800px;height=400px;}
+	#contactus 
+		{
+			background: #F2F2F2 no-repeat ;
+			border: 1px solid #000000;
+			margin-left:20;
+			margin-top:10;
+			height:400;
+			width:700;
+			padding:20;
+			float:left;
+			margin-right:20;
+		}
+
+	#contactus h1 {
+			margin-top:8;
+			font-size:80%;
+			text-align:right;
+			vertical-align:top;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: Verdana, Arial, sans-serif;
+		font-size: small;
+		}
+	
+	#header {
+		padding: 15px;
+		background: #236B9E;
+		border-bottom: 1px solid #fff;
+		text-decoration: none;
+		}
+	
+	#bdy {
+		padding: 12px;
+		background: #ffffff;
+		border-bottom: 0px solid #fff;
+		text-decoration: none;
+		}
+		
+	#bdy h1 {
+		padding: 0px;
+		margin: 0;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 140%;
+		}
+	
+	#servs {
+		padding: 15px;
+		background: #ffffff;
+		border-bottom: 0px solid #fff;
+		text-decoration: none;
+		}
+
+	#servsPG {
+		padding: 0px;
+		margin: 0;
+		background: url(../images/bk1.jpg) no-repeat top ;
+		border-bottom: 0px solid #fff;
+		text-decoration: none;
+		}
+		
+	#servsPG h4 {
+		padding: 0;
+		margin: 0;
+		color: #ff0000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		 font-style: italic;
+		font-weight: bold;
+		font-size: 140%;
+		}
+	
+	
+	#servs h1 {
+		padding: 0;
+		margin: 0;
+		color: #ff0000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		 font-style: italic;
+		font-weight: bold;
+		font-size: 140%;
+		}
+	
+	#servs h2 {
+		padding: 0;
+		margin: 0;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 90%;
+		}
+	
+	#servs h3 {
+		padding: 0;
+		margin: 0;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: underline;
+		font-weight: normal;
+		font-size: 140%;
+		}
+	#servs h4 {
+		padding: 10;
+		margin-left: 80;
+		color: #236B9E;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 120%;
+		margin-top:10;
+		margin-bottom:40;
+		}
+		
+	#servs img {
+		float:left;
+		padding: 10px;
+		}
+		
+	
+	#header h1 {
+		padding: 0;
+		margin: 0;
+		color: #ffffff;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 299%;
+		font-variant: small-caps
+
+		}
+	#header a {
+	color: #236B9E;
+		font-family: arial;
+	
+	}
+	
+	#header a:visited {
+	text-decoration: none;
+	color: #FF0000;
+}
+
+
+	/* navigation */
+	
+	#nav {
+		float: left;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		background: #ccc;
+		border-bottom: 1px solid #999;
+		}
+	
+	#nav li { 
+		float: left;
+		margin: 0;
+		padding: 0;
+		font-variant: small-caps
+
+		}
+	
+	#nav a {
+		float: left;
+		display: block;
+		padding: 6px 30px 6px 5px;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 90%;
+		color: #666;
+
+		background: #ccc url(../images/nav_slant.gif) no-repeat top right;
+		}
+	
+	#nav #nav-1 a {
+		padding-left: 20px;
+		font-variant: small-caps
+
+		}
+	
+	#nav a:hover {
+		color: #000;
+		}
+	
+	/* more */
+	
+	ul#more {
+		clear: left;
+		margin-top: 60px;
+		}
+		
+	#footer {
+		padding: 0px;
+		background: #236B8E;
+		border-bottom: 0px solid #000000;
+		}
+	
+	#footer h1 {
+		color: #ffffff;
+		font-size: 90%;
+	   font-style: italic;
+	
+		}
+		
+
+ul.pricing {
+     list-style: square inside; color:#236B8E;margin-left:60;padding:0px;font-size:90%;
+
+}
+li {
+margin-bottom: 5px;
+}
+
+
+	#bdyL {
+		padding: 30px;
+		width: 650;
+		height: 300px;
+		background: #236B9E;
+		border-bottom: 0px solid #000000;
+		text-decoration: none;
+		}
+		
+	#bdyL h1 {
+		padding: 0;
+		margin: 0;
+		color: #ffffff;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 95%;
+		position: relative;
+	    top: .5em;
+	
+		}
+
+	#bdyL h2 {
+		padding: 0;
+		margin: 0;
+		color: #666;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 150%;
+		position: relative;
+	    bottom: .8em;
+	    font-variant: small-caps;
+	    background: #ccc;
+
+	
+		}
+		
+.disclosure-title{margin-left:20;margin-bottom:5px;font-size:90%;font-weight: bold;}
+.disclosure-content {font-size:80%;color:blue;line-height:1.3em;}
+	.toggleA{padding-left:1px;background:url(../images/disclosure-closed.png) no-repeat left center;text-decoration:none;color:#000000;}
+.toggleA.active{padding-left:1px;background:url(../images/disclosure-open.png) no-repeat left center;}	
+	

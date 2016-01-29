@@ -1,0 +1,1095 @@
+imports System
+imports System.Collections
+imports System.Data.SqlClient
+imports System.ComponentModel
+imports System.Data
+imports System.Drawing
+imports System.Drawing.Color 
+imports System.Web
+imports System.Web.SessionState
+imports System.Web.UI
+imports System.Web.UI.WebControls
+imports System.Web.UI.HtmlControls
+imports System.xml
+imports System.Configuration
+imports system.Globalization
+imports system.net.mail
+Imports System.Text
+
+Namespace PageTemplate
+    Public Class intake
+        Inherits page
+
+        Private Shared newleadno As String = ""
+        Private Shared ADagent, ADagentFK, adLeadtype,mrktprg, adsource, agentfullname,em1stat,em1stat2 As String
+        Private Shared selectedlogo,selectedlogo2, adleadprogram, rdurl, ven, logodir,adtitle As String
+        Private Shared emailfrom, emailreply, emailsubject, sendemailself,sendemailself2, sendemailclient, sendmailaddress,sendmailaddress2 As String
+        Public logoarea, logoarea2
+        Public coname, coname2, brandtext1, brandtext2, hdtxt1, hdtxt2, hdtxt2A, hdtxt1A As label
+        Public txtFName, txtLName, txtHphone, txtemail, txtnotes, emailbody As textbox
+        Public Thankyou, MainForm, pnlemailphonereq As panel
+        Private Shared brandshowlogo,brandshowlogo2 As Boolean
+        Private Shared showdlogoA,showdlogoA2,em1sendlink2,em1sendlink As Boolean
+        private shared orgurl as object
+        private shared mq as string = ""
+        public pg1hr,pg2hr
+        public redirect as button
+
+
+        Private Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+
+            If Not (Page.IsPostBack) Then
+            	
+                GetCompanyinfo()
+                'Logoarea.Attributes("src") = "../logos/company/globe5.gif"
+                'Logoarea2.Attributes("src") = "../logos/company/globe5.gif"
+                If brandshowlogo Then
+                    If showdlogoA Then
+                        Logoarea.Attributes("src") = "../logos/company/" & selectedlogo
+                    Else
+                        Logoarea.Attributes("src") = logodir & getlogo(selectedlogo)
+                  End If
+                Else
+                    Logoarea.Attributes("src") = "../logos/company/Magic-128x128.png"
+                   logoarea.visible=true
+                End If
+                
+                If brandshowlogo2 Then
+                    If showdlogoA2 Then
+                        Logoarea2.Attributes("src") = "../logos/company/" & selectedlogo2
+                    Else
+                        Logoarea2.Attributes("src") = logodir & getlogo(selectedlogo2)
+						  End If
+                Else
+                    Logoarea2.Attributes("src") = "../logos/company/Magic-128x128.png"
+                    Logoarea2.visible=true
+                End If         
+                
+
+                MainForm.visible = True
+                Thankyou.visible = False
+                if not Request.UrlReferrer is nothing then 
+                
+                	ViewState("ReferrerUrl")  = Request.UrlReferrer.ToString()
+                	orgurl = ViewState("ReferrerUrl")
+						'If orgurl IsNot Nothing Then
+						'	response.write(ViewState("ReferrerUrl"))
+					Else
+						orgurl="Null"
+                end if
+                
+                 
+                'response.write(Request.ServerVariables("HTTP_REFERER"))
+                'response.write("hey")
+
+            End If
+        End Sub
+        Public Function getlogo(ByVal id As String) As String
+            Dim strSql As String = "SELECT ui_filename from tbl_userimages where ui_tbl_pk='" & id & "'"
+            Dim sqlCmd As SqlCommand
+            Dim myConnection As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+            sqlCmd = New SqlCommand(strSql, myConnection)
+
+            Try
+                myConnection.Open()
+                Dim Sqldr As SqlDataReader = sqlCmd.ExecuteReader
+                If Sqldr.Read() Then
+                    Return Sqldr("ui_filename")
+                End If
+
+            Catch SQLexc As SqlException
+                Response.Write("Error occured while Generating Data. Error is " & SQLexc.ToString())
+            Finally
+                myConnection.Close()
+            End Try
+        End Function
+        
+        Sub GetCompanyinfo()
+
+            Dim strConnection As String
+
+            Dim sqlConn As SqlConnection
+            Dim sqlCmd As SqlCommand
+            Dim strSql As String = "select co_name,co_logo,ad_userid,users_tbl_PK,ad_Leadtype,av_name, " _
+                    & "fname + ' ' + lname as 'fullname',ad_leadprogram,* from dbo.tbl_users " _
+ 	                 & "left join dbo.tbl_company  on co_tbl_pk = company_pk " _
+                  & "join dbo.tbl_LeadADs on ad_userid = uid join dbo.tbl_LeadADVenues on av_leadads_FK = tbl_leadad_pk " _
+                    & "left join tbl_adbranding on tbl_branding_pk=ad_intakeresponse " _
+                    & "join dbo.tbl_xwalk on x_descr = av_name and x_type='Leadsource' " _
+                    & "left join dbo.tbl_userimages on ui_tbl_pk=br_img_fk " _
+                    & "where av_key ='" & Request.QueryString("adcode") & "'"
+            Try
+                strConnection = System.Configuration.ConfigurationManager.AppSettings("ConnectionString")
+                sqlConn = New SqlConnection(strConnection)
+                sqlCmd = New SqlCommand(strSql, sqlConn)
+                sqlConn.Open()
+                Dim Sqldr As SqlDataReader = sqlCmd.ExecuteReader
+
+                If Sqldr.Read() Then
+                    ADagent = sqldr("ad_userid")
+                    ADagentFK = sqldr("users_tbl_PK")
+                    adLeadtype = sqldr("ad_Leadtype")
+                    mrktprg = sqldr("ld_marketingprg")
+                    adsource = sqldr("av_name")
+                    agentfullname = sqldr("fullname")
+                    adleadprogram = sqldr("ad_leadprogram")
+                    ven = sqldr("av_name")
+                    adtitle=sqldr("ad_title")
+                    
+                    
+                    If sqldr("brandingPurchased") = "Yes" Then
+                        If sqldr("br_text1") IsNot dbnull.value Then
+                            brandtext1.text = sqldr("br_text1")
+                            brandtext1.text = brandtext1.text.Replace(vbCrLf, "<br>")
+                        End If
+                        If sqldr("br_text2") IsNot dbnull.value Then
+                            brandtext2.text = sqldr("br_text2")
+                            brandtext2.text = brandtext2.text.Replace(vbCrLf, "<br>")
+                        End If
+                        If sqldr("br_redirecturl") IsNot dbnull.value Then
+                            If sqldr("br_redirecturl") = "" Then
+                                
+                               If sqldr("x_url") IsNot dbnull.value Then
+                            		If sqldr("x_url") = "" Then
+                            			rdurl = orgurl
+                            		else
+                            			rdurl = "http://" & sqldr("x_url")
+		                            		end if
+		                            else
+		                            		rdurl = orgurl
+		                            end if
+                            Else
+                                rdurl = "http://" & sqldr("br_redirecturl")
+                            End If
+
+                        Else
+                            If sqldr("x_url") IsNot dbnull.value Then
+                            		If sqldr("x_url") = "" Then
+                            			rdurl = orgurl
+                            		else
+                            			rdurl = "http://" & sqldr("x_url")
+                            		end if
+                            else
+                            		rdurl = orgurl
+                            end if
+                            
+                            
+                        End If
+
+                        If Sqldr("br_showlogo") IsNot dbnull.value Then
+                            If Sqldr("br_showlogo") = "Y" Then
+                                brandshowlogo = True
+                                If Sqldr("br_img_fk") IsNot dbnull.value Then
+                                    If Sqldr("br_img_fk") = "999999" Then
+                                        showdlogoA = True
+                                        selectedlogo = Sqldr("co_logo")
+                                    Else
+                                        showdlogoA = False
+                                        selectedlogo = Sqldr("br_img_fk")
+                                    End If
+                                Else
+                                    brandshowlogo = False
+                                    selectedlogo = ""
+                                End If
+                            Else
+                                brandshowlogo = False
+                                selectedlogo = ""
+                            End If
+                      Else
+                          brandshowlogo = False
+                          selectedlogo = ""
+                      End If
+                       If Sqldr("br_showlogo2") = "Y" Then
+                                brandshowlogo2 = True
+                                If Sqldr("br_img_fk2") IsNot dbnull.value Then
+                                    If Sqldr("br_img_fk2") = "999999" Then
+                                        showdlogoA2 = True
+                                        selectedlogo2 = Sqldr("co_logo")
+                                    Else
+                                        showdlogoA2 = False
+                                        selectedlogo2 = Sqldr("br_img_fk2")
+                                    End If
+                                Else
+                                    brandshowlogo2 = False
+                                    selectedlogo2 = ""
+                                End If
+                                                       
+                      Else
+                          brandshowlogo2 = False
+                          selectedlogo2 = ""
+
+                      End If
+                        If sqldr("br_sendemail") IsNot dbnull.value Then
+                            If Sqldr("br_sendemail") = "Y" Then
+                                sendemailclient = "Y"
+                                emailfrom = Sqldr("br_emailfrom")
+                                emailreply = Sqldr("br_emailreply")
+                                emailsubject = Sqldr("br_emailsubject")
+                                emailbody.Text = Sqldr("br_emailbody")
+                            Else
+                                sendemailclient = "N"
+                            End If
+                        End If
+                        If sqldr("br_getemail") IsNot dbnull.value Then
+                            If sqldr("br_getemail") = "Y" Then
+                                sendemailself = "Yes"
+                                If sqldr("br_emailaddress") IsNot dbnull.value
+                                		sendmailaddress = sqldr("br_emailaddress")
+                                	else
+                                		sendmailaddress = ""
+                                end if
+                            End If
+                        else
+                        		sendemailself = "No"
+                        End If
+                        If sqldr("br_getemail2") IsNot dbnull.value Then
+                            If sqldr("br_getemail2") = "Y" Then
+                                sendemailself2 = "Yes"
+                                	If sqldr("br_emailaddress2") IsNot dbnull.value	
+                                		sendmailaddress2 = sqldr("br_emailaddress2")
+                                	else
+                                		sendmailaddress2 = ""
+                                	end if
+                            End If
+                        else
+                        		sendemailself2 = "No"
+                        End If
+                        
+                        
+                        If sqldr("br_showconame") IsNot dbnull.value Then
+                         		If sqldr("br_showconame") = "Y" then
+	                         		If sqldr("br_company_fk") IsNot dbnull.value Then
+			                            coname.text = sqldr("br_company_fk")
+			                        Else
+			                            coname.text = sqldr("co_name")
+			                         End If
+                         		else
+                         			coname.visible=false
+                         		end if
+		                   else
+		                   	coname.visible=false
+                         end if
+		                     If sqldr("br_showconame2") IsNot dbnull.value Then
+                         		If sqldr("br_showconame2") = "Y" then
+	                         		If sqldr("br_company_fk") IsNot dbnull.value Then
+			                            coname2.text = sqldr("br_company_fk")
+			                        Else
+			                             coname2.text = sqldr("co_name")
+			                        End If
+                         		else
+                         				coname2.visible=false
+                         		end if
+		                   else
+		                   	coname2.visible=false
+		                   end if
+
+                        If sqldr("br_headtxt1Show") IsNot dbnull.value Then
+                             If sqldr("br_headtxt1Show") = "Y" Then
+                                hdtxt1.text = sqldr("br_headtext1")
+                           
+                            Else
+                                hdtxt1.visible = False
+                            End If
+                        Else
+                            hdtxt1.visible = False
+                         End If
+                          If sqldr("br_headtxt1Show2") IsNot dbnull.value Then
+                            If sqldr("br_headtxt1Show2") = "Y" Then
+                                hdtxt1A.text = sqldr("br_headtext1")
+									  Else
+                                 hdtxt1A.visible = False
+                            End If
+                        Else
+                             hdtxt1A.visible = False
+                        End If
+
+                        If sqldr("br_headtxt2Show") IsNot dbnull.value Then
+                            If sqldr("br_headtxt2Show") = "Y" Then
+                                hdtxt2.text = sqldr("br_headtext2")
+                            
+                            Else
+                                hdtxt2.visible = False
+                             End If
+                        Else
+                            hdtxt2.visible = False
+                         
+                        End If
+                         If sqldr("br_headtxt2Show2") IsNot dbnull.value Then
+                            If sqldr("br_headtxt2Show2") = "Y" Then
+                               hdtxt2A.text = sqldr("br_headtext2")
+
+                            Else
+                                  hdtxt2A.visible = False
+                            End If
+                        Else
+                             hdtxt2A.visible = False
+
+                        End If
+
+                        If sqldr("ui_location") IsNot dbnull.value Then
+                            logodir = sqldr("ui_location")
+                        Else
+                            logodir = "../logos/company/"
+
+                        End If
+ 							
+ 							If sqldr("br_showHRpg1") IsNot dbnull.value Then
+	                         If sqldr("br_showHRpg1") = "Y" Then
+	                               	pg1hr.visible=true
+							          Else
+	                                pg1hr.visible=False
+	                             End If
+                        else
+                        	pg1hr.visible=False
+                         end if
+                         If sqldr("br_showHRpg12") IsNot dbnull.value Then
+	                         If sqldr("br_showHRpg12") = "Y" Then
+	                         			pg2hr.visible=true
+	                            Else
+	                                  pg2hr.visible=False
+	                            End If
+                        else
+                         	pg2hr.visible=False
+                        end if
+                        
+                        
+                        If sqldr("br_showContinue") IsNot dbnull.value Then
+	                         If sqldr("br_showContinue") = "Y" Then
+	                               	redirect.visible=true
+												
+	                            Else
+	                               redirect.visible=false
+	                            End If
+                        else
+                        	redirect.visible=false
+                        end if
+                        
+                        If sqldr("br_Leadlvl1") IsNot dbnull.value Then
+	                        em1stat = sqldr("br_Leadlvl1")
+	                     End If
+	                     
+                       	If sqldr("br_Leadlvl2") IsNot dbnull.value Then
+	                        em1stat2 = sqldr("br_Leadlvl2")
+	                     End If
+                        
+                        If sqldr("br_emlink") IsNot dbnull.value Then
+	                         If sqldr("br_emlink") = "Y" Then
+	                            em1sendlink= true
+	                         Else
+	                            em1sendlink= false
+	                         End If
+                        else
+                      
+                        end if
+                        If sqldr("br_emlink2") IsNot dbnull.value Then
+	                         If sqldr("br_emlink2") = "Y" Then
+	                            em1sendlink2= true 
+	                         Else
+	                            em1sendlink2= false
+	                         End If
+                        else
+                      
+                        end if
+                        If sqldr("br_mq") IsNot dbnull.value Then
+	                         mq=sqldr("br_mq")
+                        else
+                      		mq="None"
+                        end if
+
+
+                    Else
+                    		brandshowlogo =false
+								brandshowlogo2 =false
+                      	em1sendlink= false
+                      	em1sendlink2= false
+                      	sendemailself2 = "No"
+                      	sendemailself = "No"
+                        brandtext1.text = "Please complete the following information and click Submit"
+                        brandtext2.text = "Thank You!  Your request will be processed shortly."
+                        selectedlogo = ""
+                        coname.text = ""
+                        coname2.text = ""
+                        rdurl = "http://" & getvenurl(ven)
+                        sendemailclient = "N"
+                        hdtxt1.text = "<A href='http://www.webmagicportal.com'>Supercharge Your Online Marketting</A>"
+                    End If
+
+
+                End If
+
+            Catch ex As Exception
+                Response.Write(ex.ToString())
+            Finally
+                sqlConn.Close()
+            End Try
+        End Sub
+        Public Function getvenurl(ByVal x As String) As String
+            Dim strConnection As String
+
+            Dim sqlConn As SqlConnection
+            Dim sqlCmd As SqlCommand
+            Dim strSql As String = "select * from tbl_xwalk where x_type='leadsource' and x_descr='" & x & "'"
+            Try
+                strConnection = System.Configuration.ConfigurationManager.AppSettings("ConnectionString")
+                sqlConn = New SqlConnection(strConnection)
+                sqlCmd = New SqlCommand(strSql, sqlConn)
+                sqlConn.Open()
+                Dim Sqldr As SqlDataReader = sqlCmd.ExecuteReader
+
+                If Sqldr.Read() Then
+                	if sqldr("x_url") isnot dbnull.value then
+                    Return sqldr("x_url")
+                  else
+                     return orgurl
+                  end if
+                End If
+            Catch ex As Exception
+                Response.Write(ex.ToString())
+            Finally
+                sqlConn.Close()
+            End Try
+
+        End Function
+	
+        Sub btnSendrequest_Click(ByVal sender As Object, ByVal e As EventArgs)
+            If txtemail.text = "" And txtHphone.text = "" Then
+                pnlemailphonereq.visible = True
+            Else
+                getnewleadno()
+                InsertDB()
+                inserthistoryrecord("Lead was autocreated and added to system","Internal","")
+                UpdateVenueCounts()
+                UpdateTotalCounts()
+                If sendemailclient = "Y" And txtemail.text.length > 0 Then                    
+                    sendemail()
+                End If
+                If sendemailself = "Yes" 
+             	if (sendmailaddress = "" or sendmailaddress is nothing) Then
+                   	
+                	else
+                    sendemailselfSUB()
+                  end if
+                End If
+                If sendemailself2 = "Yes" 
+              	if (sendmailaddress2 = "" or sendmailaddress2 is nothing) Then
+                  	
+                	else
+                    sendemailselfSUB2()
+                  end if
+                End If
+                
+                if mq = "None" then
+                
+                elseif mq = "999998"
+                
+                else
+                	'response.write(mq)
+                	sendqmails()
+                
+                end if
+                
+                MainForm.Visible = False
+                Thankyou.Visible = True
+            End If
+        End Sub
+        
+         Public Sub sendqmails()
+           
+            Dim myConnection As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+            Dim mycommand As String
+            mycommand = "Select eqd_leadno,case when (ld_email is null or ld_email ='') then ld_email2 else ld_email end as 'ldemail' " _
+                & "from tbl_leads join tbl_leadexportqueuedetail on eqd_leadno=tbl_leads_pk " _
+                & "where (eqd_eq_fk ='" & mq & "' and ((ld_email is not null and ld_email <> '') or " _
+                & "(ld_email2 is not null and ld_email2 <> ''))) "
+            Dim ad As New SqlDataAdapter(mycommand, myConnection)
+            Dim ds As New DataSet()
+            Dim str As New StringBuilder()
+
+
+            Try
+                ad.Fill(ds)
+                'ds.Tables(0).TableName = "bill"
+            Catch exc As System.Exception
+                Response.Write(exc.ToString())
+            Finally
+                myConnection.Dispose()
+            End Try
+
+            Dim i As Integer
+            dim wt as integer
+            For i = 0 To ds.Tables(0).Rows.Count - 1
+                'Response.Write(ds.Tables(0).Rows(i)(1).ToString())
+                sendemailQ(ds.Tables(0).Rows(i)(0).ToString(), ds.Tables(0).Rows(i)(1).ToString())
+                for wt=0 to 100000000
+                next
+            Next
+            
+
+        End Sub
+        
+        Sub sendemailQ(ByVal ldno As String, ByVal emailid As String)
+            Dim mail As New MailMessage()
+  				Dim RightNowAdd As datetime = datetime.now
+            'Set the properties - send the email to the person who filled out the
+            mail.From = New MailAddress("System@webmagicportal.com")
+            mail.To.Add(emailid)            
+            mail.Subject = "New Lead Notification- " & RightNowAdd
+            mail.Body = "<table>"
+             	 	'mail.From = New MailAddress("Newleads@webmagicportal.com")
+           		mail.Body = mail.Body + "<tr><td><b>Web Magic has a New Lead ready for you to contact!</b></td></tr></table><br><table> " 
+          		mail.Body = mail.Body + "<tr><td>This lead has responded to: " + "</td><td>" & adtitle & "</td></tr></table><br><table>"
+           		mail.Body = mail.Body + "<tr><td colspan=2><u>Below are the details for this Lead.</u></td></tr> "            
+            	mail.Body = mail.Body + "<tr><td>Lead No:</td><td> " & newleadno & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Type:</td><td> " & adLeadtype & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Name:</td><td> " & left(txtFName.text,1)+"xxxx" & " " & left(txtLName.text,1) + "xxxx" & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Email:</td><td> " & left(txtemail.text,3)+"xxxx" & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Phone:</td><td> " & left(txtHphone.text,3) + "xxxx" & "</td></tr></table><br> "
+            	mail.Body = mail.Body + "<table><tr><td><a href=" & System.Configuration.ConfigurationManager.AppSettings("CurrentwebURL") & "/buyleads.aspx?id=" & newleadno & "&email=" & emailid & ">CLICK HERE</a> To buy this lead NOW and get the contact info immediately by email.</td></tr>"
+            	mail.Body = mail.Body + "<tr><td><a href=" & System.Configuration.ConfigurationManager.AppSettings("CurrentwebURL") & "/gsignup.aspx>CLICK HERE</a> To buy access to unlimited lead generation for a low monthly fee.</td></tr></table><br>"
+            	mail.Body = mail.Body + "<table><tr><td>Thank you for letting Web Magic Portal work for you!</td></tr></table><br><br><br>"
+        			'mail.Body = mail.Body + "</table>"
+            mail.IsBodyHtml = True
+            'send the message
+           'Dim smtp As New SmtpClient("192.168.235.11")
+				Dim smtp As New SmtpClient("192.168.235.12")
+           smtp.ServicePoint.MaxIdleTime = 0
+           smtp.Send(mail)
+           
+            inserthistoryrecordQ(ldno, emailid)
+
+        End Sub
+        
+         Sub inserthistoryrecordQ(ByVal id As String, ByVal emto As String)
+
+            Dim rightNow As DateTime = DateTime.Now.ToShortDateString()
+            'Dim rightNow as string= DateTime.Now.ToString("MM/dd/yyyy")
+            Dim RightNowAdd As DateTime = DateTime.Now
+            Dim supportedFormats() As String = New String() {"M/dd/yyyy", "M/d/yyyy", "MM/dd/yyyy", "MM/dd/yy", "ddMMMyyyy", "dMMMyyyy"}
+            Dim myConnectionADD As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+            Dim sqlproc As String
+            sqlproc = "sp_insertleadcontact"
+
+            Dim myCommandADD As New SqlCommand(sqlproc, myConnectionADD)
+            myCommandADD.CommandType = CommandType.StoredProcedure
+
+            ' Add Parameters to SPROC
+
+            Dim prmleadno As New SqlParameter("@leadfk", SqlDbType.Int)
+            prmleadno.Value = id
+            myCommandADD.Parameters.Add(prmleadno)
+
+            Dim prmcapdate As New SqlParameter("@capdate", SqlDbType.DateTime)
+            prmcapdate.Value = rightNow
+            myCommandADD.Parameters.Add(prmcapdate)
+
+            Dim prmnotes As New SqlParameter("@l_notes", SqlDbType.Text)
+            Dim nt As String
+            nt = "To: " & emto & vbCrLf
+           
+            prmnotes.Value = nt
+            myCommandADD.Parameters.Add(prmnotes)
+
+            Dim prmuid As New SqlParameter("@uid", SqlDbType.VarChar, 50)
+            prmuid.Value = adagent
+            myCommandADD.Parameters.Add(prmuid)
+
+            Dim prmtype As New SqlParameter("@LHType", SqlDbType.VarChar, 50)
+            prmtype.Value = "Email"
+            myCommandADD.Parameters.Add(prmtype)
+
+            Dim prmfollowup As New SqlParameter("@followup", SqlDbType.VarChar, 50)
+            prmfollowup.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmfollowup)
+
+            Dim prmaction As New SqlParameter("@followupactions", SqlDbType.Text)
+            prmaction.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmaction)
+
+            Dim prmstatus As New SqlParameter("@LHstat", SqlDbType.VarChar, 50)
+            prmstatus.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmstatus)
+
+            Dim prmwho As New SqlParameter("@LHwho", SqlDbType.VarChar, 50)
+            prmwho.Value = "Lead"
+            myCommandADD.Parameters.Add(prmwho)
+
+            Dim prmclosedt As New SqlParameter("@closedate", SqlDbType.DateTime)
+            prmclosedt.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmclosedt)
+
+            Dim prmfduedt As New SqlParameter("@fduedate", SqlDbType.DateTime)
+            prmfduedt.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmfduedt)
+
+            Try
+                myConnectionADD.Open()
+                myCommandADD.ExecuteNonQuery()
+                myConnectionADD.Close()
+            Catch SQLexc As SqlException
+                Response.Write("Insert Failed. Error Details are: " & SQLexc.ToString())
+            End Try
+        End Sub
+       
+        
+        Sub sendemail()
+
+            Dim mail As New MailMessage()
+            'Response.Write(emailfrom)
+            'Response.Write(emailreply)
+            'Response.Write(txtemail.Text)
+            'Response.Write(emailsubject)
+            'Response.Write(emailbody.Text)
+            'Set the properties - send the email to the person who filled out the
+            mail.From = New MailAddress(emailfrom)
+            mail.ReplyTo = New MailAddress(emailreply)
+            mail.To.Add(txtemail.Text)
+            mail.Subject = emailsubject
+            mail.Body = emailbody.Text
+				dim mnote as string = mail.body
+				
+            'send the message
+          	mail.IsBodyHtml = True
+         	Dim smtp As New SmtpClient("192.168.235.12")
+         	smtp.Send(mail)
+           inserthistoryrecord(mnote, "email","")
+        End Sub
+        Sub sendemailselfSUB()
+            Dim RightNowAdd As datetime = datetime.now
+
+            Dim mail As New MailMessage()
+
+            'Set the properties - send the email to the person who filled out the
+            mail.From = New MailAddress("System@webmagicportal.com")
+            ' mail.ReplyTo = New MailAddress(emailreply)
+            mail.To.Add(sendmailaddress)
+            mail.Subject = "New Lead Notification- " & RightNowAdd
+            mail.Body = "<table>"
+            if em1stat="Anonymous" then
+            mail.From = New MailAddress("Newleads@webmagicportal.com")
+               mail.Body = mail.Body + "<tr><td><b>Web Magic has a New Lead ready for you to contact!</b></td></tr></table><br><table> " 
+          		mail.Body = mail.Body + "<tr><td>This lead has responded to: " + "</td><td>" & adtitle & "</td></tr></table><br><table>"
+           		mail.Body = mail.Body + "<tr><td colspan=2><u>Below are the details for this Lead.</u></td></tr> "            
+            	mail.Body = mail.Body + "<tr><td>Lead No:</td><td> " & newleadno & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Type:</td><td> " & adLeadtype & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Name:</td><td> " & left(txtFName.text,1)+"xxxx" & " " & left(txtLName.text,1) + "xxxx" & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Email:</td><td> " & left(txtemail.text,3)+"xxxx" & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Phone:</td><td> " & left(txtHphone.text,3) + "xxxx" & "</td></tr></table><br>  "
+            	mail.Body = mail.Body + "<table><tr><td><a href='" & System.Configuration.ConfigurationManager.AppSettings("CurrentwebURL") & "/buyleads.aspx?id=" & newleadno & "&email=" & sendmailaddress & "'>CLICK HERE</a> To buy this lead NOW and get the contact info immediately by email.</td></tr>"
+            	mail.Body = mail.Body + "<tr><td><a href='" & System.Configuration.ConfigurationManager.AppSettings("CurrentwebURL") & "/gsignup.aspx'>CLICK HERE</a> To buy access to unlimited lead generation for a low monthly fee.</td></tr></table><br>"
+            	mail.Body = mail.Body + "<table><tr><td>Thank you for letting Web Magic Portal work for you!</td></tr></table><br><br><br>"
+        
+        			'mail.Body = mail.Body + "<table><tr><td><a href=" & System.Configuration.ConfigurationManager.AppSettings("CurrentwebURL") & "/unsubscribe.aspx?email=" & sendmailaddress & "&uid=" & ADagent & ">Get Removed</a></td></tr>"
+            
+            elseif em1stat="Basic"
+               mail.Body = "<tr><td><b>You have received a New Lead!</b></td></tr></table><br><table> " 
+         		mail.Body = mail.Body + "<tr><td>This lead has responded to: " + "</td><td>" & adtitle & "</td></tr></table><br><table>"
+           		mail.Body = mail.Body + "<tr><td colspan=2>Below are the details for your Lead.</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead No:</td><td> " & newleadno & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Name:</td><td> " & txtFName.text & " " & txtLName.text & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Email:</td><td> " & txtemail.text & "</td></tr>"
+            	
+            else
+              mail.Body = "<tr><td><b>You have received a New Lead!</b></td></tr></table><br><table> " 
+         		mail.Body = mail.Body + "<tr><td>This lead has responded to: " + "</td><td>" & adtitle & "</td></tr></table><br><table>"
+           		mail.Body = mail.Body + "<tr><td colspan=2>Below are the details for your Lead.</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead No:</td><td> " & newleadno & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Type:</td><td> " & adLeadtype & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Name:</td><td> " & txtFName.text & " " & txtLName.text & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Email:</td><td> " & txtemail.text & "</td></tr>"
+            	mail.Body = mail.Body + "<tr><td>Lead Phone:</td><td> " & txtHphone.text & "</td></tr>"
+          
+          	end if
+          	if em1sendlink then 
+          		mail.Body = mail.Body + "<tr><td colspan=2>You can login to work with this lead immediately.</td></tr>"
+          		mail.Body = mail.Body + "<tr><td colspan=2><a href=" & System.Configuration.ConfigurationManager.AppSettings("CurrentappURL") & "/addlead.aspx?action=view&id=" & newleadno &">Click Here</a>"
+          	end if
+          	mail.Body = mail.Body + "</table>"
+          	dim mnote as string = mail.body
+          	 mail.IsBodyHtml = True
+
+            'send the message
+            Dim smtp As New SmtpClient("192.168.235.12")
+            smtp.Send(mail)
+            				
+				'inserthistoryrecord(mnote, "email",ADagent)
+        End Sub
+        Sub sendemailselfSUB2()
+            Dim RightNowAdd As datetime = datetime.now
+
+            Dim mail As New MailMessage()
+
+            'Set the properties - send the email to the person who filled out the
+            mail.From = New MailAddress("System@webmagicportal.com")
+            ' mail.ReplyTo = New MailAddress(emailreply)
+            mail.To.Add(sendmailaddress2)
+            mail.Subject = "New Lead Notification- " & RightNowAdd
+            mail.Body = "<table>"
+            if em1stat2="Anonymous" then
+            	mail.From = New MailAddress("Newleads@webmagicportal.com")
+               mail.Body = mail.Body + "<tr><td><b>Web Magic has a New Lead ready for you to contact!</b></td></tr></table><br><table> " 
+          		mail.Body = mail.Body + "<tr><td>This lead has responded to: " + "</td><td>" & adtitle & "</td></tr></table><br><table>"
+           		mail.Body = mail.Body + "<tr><td colspan=2><u>Below are the details for this Lead.</u></td></tr> "            
+            	mail.Body = mail.Body + "<tr><td>Lead Type:</td><td> " & adLeadtype & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Name:</td><td> " & left(txtFName.text,1)+"xxxx" & " " & left(txtLName.text,1) + "xxxx" & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Email:</td><td> " & left(txtemail.text,3)+"xxxx" & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Phone:</td><td> " & left(txtHphone.text,3) + "xxxx" & "</td></tr></table><br>  "
+            	mail.Body = mail.Body + "<table><tr><td><a href=" & System.Configuration.ConfigurationManager.AppSettings("CurrentwebURL") & "/buyleads.aspx?id=" & newleadno & "&email=" & sendmailaddress & ">CLICK HERE</a>&nbspTo buy this lead NOW and get the contact info immediately by email</td></tr>"
+            	mail.Body = mail.Body + "<tr><td><a href=" & System.Configuration.ConfigurationManager.AppSettings("CurrentwebURL") & "/gsignup.aspx>CLICK HERE</a> To buy access to unlimited lead generation for a low monthly fee.</td></tr></table><br>"
+            	mail.Body = mail.Body + "<table><tr><td>Thank you for letting Web Magic Portal work for you!</td></tr></table><br><br><br>"
+        
+        			'mail.Body = mail.Body + "<table><tr><td><a href=" & System.Configuration.ConfigurationManager.AppSettings("CurrentwebURL") & "/unsubscribe.aspx?email=" & sendmailaddress & "&uid=" & ADagent & ">Get Removed</a></td></tr>"
+            
+            elseif em1stat2="Basic"
+                mail.Body = "<tr><td><b>You have received a New Lead!</b></td></tr></table><br><table> " 
+         		mail.Body = mail.Body + "<tr><td>This lead has responded to: " + "</td><td>" & adtitle & "</td></tr></table><br><table>"
+           		mail.Body = mail.Body + "<tr><td colspan=2>Below are the details for your Lead.</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead No:</td><td> " & newleadno & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Name:</td><td> " & txtFName.text & " " & txtLName.text & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Email:</td><td> " & txtemail.text & "</td></tr>"
+            	
+            else
+                   mail.Body = "<tr><td><b>You have received a New Lead!</b></td></tr></table><br><table> " 
+         		mail.Body = mail.Body + "<tr><td>This lead has responded to: " + "</td><td>" & adtitle & "</td></tr></table><br><table>"
+           		mail.Body = mail.Body + "<tr><td colspan=2>Below are the details for your Lead.</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead No:</td><td> " & newleadno & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Type:</td><td> " & adLeadtype & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Name:</td><td> " & txtFName.text & " " & txtLName.text & "</td></tr> "
+            	mail.Body = mail.Body + "<tr><td>Lead Email:</td><td> " & txtemail.text & "</td></tr>"
+            	mail.Body = mail.Body + "<tr><td>Lead Phone:</td><td> " & txtHphone.text & "</td></tr>"
+        
+          	end if
+          	if em1sendlink2 then 
+          		mail.Body = mail.Body + "<tr><td colspan=2>You can login to work with this lead immediately.</td></tr>"
+          		mail.Body = mail.Body + "<tr><td colspan=2><a href=" & System.Configuration.ConfigurationManager.AppSettings("CurrentappURL") & "/addlead.aspx?action=view&id=" & newleadno &">Click Here</a>"
+          	end if
+          	mail.Body = mail.Body + "</table>"
+          	dim mnote as string = mail.body
+          	 mail.IsBodyHtml = True
+
+            'send the message
+            Dim smtp As New SmtpClient("192.168.235.12")
+            smtp.Send(mail)
+            				
+				'inserthistoryrecord(mnote, "Email",ADagent)
+
+        End Sub
+       
+        Sub btncontinue_Click(ByVal sender As Object, ByVal e As EventArgs)
+            response.redirect(rdurl)
+        End Sub
+
+        Sub InsertDB()
+
+            Dim RightNowAdd As datetime = datetime.now
+            Dim supportedFormats() As String = New String() {"M/dd/yyyy", "M/d/yyyy", "MM/dd/yyyy", "MM/dd/yy", "ddMMMyyyy", "dMMMyyyy"}
+
+            Dim myConnectionADD As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+
+            Dim sqlproc As String = "sp_addlead"
+
+            Dim myCommandADD As New SqlCommand(sqlproc, myConnectionADD)
+            myCommandADD.CommandType = CommandType.StoredProcedure
+
+            Dim prmleadno As New SqlParameter("@newleadno", SqlDbType.int)
+            prmleadno.Value = newleadno
+            myCommandADD.Parameters.Add(prmleadno)
+
+            Dim prmuid As New SqlParameter("@uid", SqlDbType.VarChar, 50)
+            prmuid.Value = ADagent
+            myCommandADD.Parameters.Add(prmuid)
+
+            Dim prmlfname As New SqlParameter("@l_fname", SqlDbType.VarChar, 50)
+            If txtFName.text = "" Then
+                prmlfname.Value = DBNull.Value
+            Else
+                prmlfname.Value = txtFName.text
+            End If
+            myCommandADD.Parameters.Add(prmlfname)
+
+            Dim prmllname As New SqlParameter("@l_lname", SqlDbType.VarChar, 50)
+            If txtLName.text = "" Then
+                prmllname.Value = DBNull.Value
+            Else
+                prmllname.Value = txtLname.text
+            End If
+            myCommandADD.Parameters.Add(prmllname)
+
+            Dim prmhphone As New SqlParameter("@l_hphone", SqlDbType.VarChar, 50)
+            prmhphone.Value = txtHphone.text
+            myCommandADD.Parameters.Add(prmhphone)
+
+            Dim prmcphone As New SqlParameter("@l_cphone", SqlDbType.VarChar, 50)
+            prmcphone.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmcphone)
+
+            Dim prmaddress As New SqlParameter("@l_address", SqlDbType.VarChar, 30)
+            prmaddress.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmaddress)
+
+            Dim prmcity As New SqlParameter("@l_city", SqlDbType.VarChar, 30)
+            prmcity.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmcity)
+
+            Dim prmstate As New SqlParameter("@l_state", SqlDbType.VarChar, 2)
+            prmstate.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmstate)
+
+            Dim prmzip As New SqlParameter("@l_zip", SqlDbType.VarChar, 50)
+            prmzip.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmzip)
+
+            Dim prmagent As New SqlParameter("@l_agent", SqlDbType.VarChar, 30)
+            prmagent.Value = agentfullname
+            myCommandADD.Parameters.Add(prmagent)
+
+            Dim prmagentFK As New SqlParameter("@l_agent_FK", SqlDbType.VarChar, 30)
+            prmagentFK.Value = ADagentFK
+            myCommandADD.Parameters.Add(prmagentFK)
+
+            Dim prmstatus As New SqlParameter("@l_status", SqlDbType.VarChar, 30)
+            prmstatus.Value = "Accepted"
+            myCommandADD.Parameters.Add(prmstatus)
+
+            Dim prmleadtype As New SqlParameter("@l_leadtype", SqlDbType.VarChar, 30)
+            prmleadtype.Value = adLeadtype
+            myCommandADD.Parameters.Add(prmleadtype)
+
+            Dim prmnotes As New SqlParameter("@l_notes", SqlDbType.text)
+            prmnotes.Value = txtnotes.text
+            myCommandADD.Parameters.Add(prmnotes)
+
+            Dim prmemail As New SqlParameter("@l_email", SqlDbType.VarChar, 50)
+            prmemail.Value = txtemail.Text
+            myCommandADD.Parameters.Add(prmemail)
+
+            Dim prmemail2 As New SqlParameter("@l_email2", SqlDbType.VarChar, 50)
+            prmemail2.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmemail2)
+
+            Dim prmadddate As New SqlParameter("@adddate", SqlDbType.datetime)
+            prmadddate.Value = RightNowAdd
+            myCommandADD.Parameters.Add(prmadddate)
+
+            Dim prmcapdate As New SqlParameter("@capdate", SqlDbType.datetime)
+            prmcapdate.Value = RightNowAdd
+            myCommandADD.Parameters.Add(prmcapdate)
+
+            Dim prmapptdate As New SqlParameter("@apptdate", SqlDbType.datetime)
+            prmapptdate.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmapptdate)
+
+            Dim prmappttime As New SqlParameter("@appttime", SqlDbType.VarChar, 5)
+            prmappttime.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmappttime)
+
+            Dim prmapptloc As New SqlParameter("@apptloc", SqlDbType.VarChar, 30)
+            prmapptloc.Value = "NA"
+            myCommandADD.Parameters.Add(prmapptloc)
+
+            Dim prmrefermortgage As New SqlParameter("@refermortg", SqlDbType.VarChar, 5)
+            prmrefermortgage.Value = "N"
+            myCommandADD.Parameters.Add(prmrefermortgage)
+
+            Dim prmrefercredit As New SqlParameter("@refercredit", SqlDbType.VarChar, 5)
+            prmrefercredit.Value = "N"
+            myCommandADD.Parameters.Add(prmrefercredit)
+
+            Dim prmreferother As New SqlParameter("@referother", SqlDbType.VarChar, 5)
+            prmreferother.Value = "N"
+            myCommandADD.Parameters.Add(prmreferother)
+
+            Dim prmreferotherex As New SqlParameter("@referotherex", SqlDbType.VarChar, 50)
+            prmreferotherex.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmreferotherex)
+
+            Dim prmcomp As New SqlParameter("@comp", SqlDbType.varchar, 15)
+            prmcomp.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmcomp)
+
+            Dim prmassignedagent As New SqlParameter("@assignedagent", SqlDbType.VarChar, 50)
+            prmassignedagent.Value = ADagent
+            myCommandADD.Parameters.Add(prmassignedagent)
+
+            Dim prmhighpri As New SqlParameter("@highpri", SqlDbType.VarChar, 5)
+            prmhighpri.Value = "No"
+            myCommandADD.Parameters.Add(prmhighpri)
+
+            Dim prmldsource As New SqlParameter("@leadsource", SqlDbType.VarChar, 50)
+            prmldsource.Value = adsource
+            myCommandADD.Parameters.Add(prmldsource)
+
+            Dim prmadcode As New SqlParameter("@adcode", SqlDbType.VarChar, 50)
+            prmadcode.Value = Request.QueryString("adcode")
+            myCommandADD.Parameters.Add(prmadcode)
+
+            Dim prmmailtoaddress As New SqlParameter("@mailtoaddress", SqlDbType.VarChar, 50)
+            prmmailtoaddress.Value = "N"
+            myCommandADD.Parameters.Add(prmmailtoaddress)
+
+            Dim prmproptolist As New SqlParameter("@proplist", SqlDbType.VarChar, 50)
+            prmproptolist.Value = "N"
+            myCommandADD.Parameters.Add(prmproptolist)
+
+            Dim prmpstatus As New SqlParameter("@ld_pstatus", SqlDbType.VarChar, 50)
+            prmpstatus.Value = "New"
+            myCommandADD.Parameters.Add(prmpstatus)
+
+            Dim prmprogram As New SqlParameter("@ld_program", SqlDbType.VarChar, 50)
+            prmprogram.Value = adleadprogram
+            myCommandADD.Parameters.Add(prmprogram)
+
+            Dim prmstatdetail As New SqlParameter("@ld_statdetail", SqlDbType.VarChar, 50)
+            prmstatdetail.Value = "None"
+            myCommandADD.Parameters.Add(prmstatdetail)
+
+            Dim prmentrysource As New SqlParameter("@ld_entrysource", SqlDbType.VarChar, 50)
+            prmentrysource.Value = "Auto"
+            myCommandADD.Parameters.Add(prmentrysource)
+
+            Dim prmfax As New SqlParameter("@ld_fax", SqlDbType.VarChar, 50)
+            prmfax.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmfax)
+            
+            Dim prmmkprg As New SqlParameter("@marketprog", SqlDbType.VarChar, 50)
+            prmmkprg.Value = mrktprg
+            myCommandADD.Parameters.Add(prmmkprg)
+
+            Try
+                myConnectionADD.Open()
+                myCommandADD.ExecuteNonQuery()
+                myConnectionADD.Close()
+            Catch SQLexc As SqlException
+                Response.Write("Insert Failed. Error Details are: " & SQLexc.ToString())
+            End Try
+
+        End Sub
+
+        Sub getnewleadno()
+            Dim strUID As String = session("userid")
+            Dim strSql As String = "SELECT max(tbl_leads_pk)+1 as 'newpk' from dbo.tbl_leads"
+            Dim sqlCmd As SqlCommand
+            Dim myConnection As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+            sqlCmd = New SqlCommand(strSql, myConnection)
+
+            Try
+                myConnection.Open()
+                Dim Sqldr As SqlDataReader = sqlCmd.ExecuteReader
+                If Sqldr.read() Then
+                    newleadno = Sqldr("newpk")
+                End If
+
+            Catch SQLexc As SqlException
+                Response.Write("Error occured while Generating Data. Error is " & SQLexc.ToString())
+            Finally
+                myConnection.close()
+            End Try
+        End Sub
+
+        Sub UpdateVenueCounts()
+            Dim strSql As String = "update tbl_LeadADVenues set av_resultsCnt=av_resultsCnt+1 where av_key = '" & Request.QueryString("adcode") & "'"
+            Dim sqlCmd As SqlCommand
+            Dim myConnection As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+            sqlCmd = New SqlCommand(strSql, myConnection)
+
+            Try
+                myConnection.Open()
+                Dim Sqldr As SqlDataReader = sqlCmd.ExecuteReader
+
+            Catch SQLexc As SqlException
+                Response.Write("Error occured while Generating Data. Error is " & SQLexc.ToString())
+            Finally
+                myConnection.close()
+            End Try
+
+        End Sub
+
+        Sub UpdateTotalCounts()
+            Dim strSql As String = "update tbl_LeadADs set ad_totalLeadcount=ad_totalLeadcount+1 from tbl_LeadADs join tbl_LeadADVenues on av_leadads_FK=tbl_leadad_pk where av_key ='" & Request.QueryString("adcode") & "'"
+            Dim sqlCmd As SqlCommand
+            Dim myConnection As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+            sqlCmd = New SqlCommand(strSql, myConnection)
+
+            Try
+                myConnection.Open()
+                Dim Sqldr As SqlDataReader = sqlCmd.ExecuteReader
+
+            Catch SQLexc As SqlException
+                Response.Write("Error occured while Generating Data. Error is " & SQLexc.ToString())
+            Finally
+                myConnection.close()
+            End Try
+        End Sub
+        
+         Sub inserthistoryrecord(lnotes as string, ltype as string,lagent as string)
+
+            Dim rightNow As DateTime = DateTime.Now.ToShortDateString()
+            'Dim rightNow as string= DateTime.Now.ToString("MM/dd/yyyy")
+            Dim RightNowAdd As DateTime = DateTime.Now
+            Dim supportedFormats() As String = New String() {"M/dd/yyyy", "M/d/yyyy", "MM/dd/yyyy", "MM/dd/yy", "ddMMMyyyy", "dMMMyyyy"}
+            Dim myConnectionADD As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+            Dim sqlproc As String
+            sqlproc = "sp_insertleadcontact"
+
+            Dim myCommandADD As New SqlCommand(sqlproc, myConnectionADD)
+            myCommandADD.CommandType = CommandType.StoredProcedure
+
+            ' Add Parameters to SPROC
+         
+            Dim prmleadno As New SqlParameter("@leadfk", SqlDbType.Int)
+            prmleadno.Value = newleadno
+            myCommandADD.Parameters.Add(prmleadno)
+
+            Dim prmcapdate As New SqlParameter("@capdate", SqlDbType.DateTime)
+            prmcapdate.Value = rightNow
+            myCommandADD.Parameters.Add(prmcapdate)
+
+            Dim prmnotes As New SqlParameter("@l_notes", SqlDbType.Text)
+            'Dim nt As String
+            'nt = "Lead was autocreated and added to system"
+            prmnotes.Value = lnotes
+
+            myCommandADD.Parameters.Add(prmnotes)
+
+            Dim prmuid As New SqlParameter("@uid", SqlDbType.VarChar, 50)
+            prmuid.Value = ADagent
+            myCommandADD.Parameters.Add(prmuid)
+
+            Dim prmtype As New SqlParameter("@LHType", SqlDbType.VarChar, 50)
+            prmtype.Value = ltype
+            myCommandADD.Parameters.Add(prmtype)
+
+            Dim prmfollowup As New SqlParameter("@followup", SqlDbType.VarChar, 50)
+            prmfollowup.Value = "No"
+            myCommandADD.Parameters.Add(prmfollowup)
+
+            Dim prmaction As New SqlParameter("@followupactions", SqlDbType.Text)
+            prmaction.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmaction)
+
+            Dim prmstatus As New SqlParameter("@LHstat", SqlDbType.VarChar, 50)
+            prmstatus.Value = "Closed"
+            myCommandADD.Parameters.Add(prmstatus)
+
+            Dim prmwho As New SqlParameter("@LHwho", SqlDbType.VarChar, 50)
+            prmwho.Value = "System"
+            myCommandADD.Parameters.Add(prmwho)
+
+            Dim prmclosedt As New SqlParameter("@closedate", SqlDbType.DateTime)
+            prmclosedt.Value = rightNow
+            myCommandADD.Parameters.Add(prmclosedt)
+
+            Dim prmfduedt As New SqlParameter("@fduedate", SqlDbType.DateTime)
+            prmfduedt.Value = DBNull.Value
+            myCommandADD.Parameters.Add(prmfduedt)
+
+            Try
+                myConnectionADD.Open()
+                myCommandADD.ExecuteNonQuery()
+                myConnectionADD.Close()
+            Catch SQLexc As SqlException
+                Response.Write("Insert Failed. Error Details are: " & SQLexc.ToString())
+            End Try
+        End Sub
+
+    End Class
+End Namespace

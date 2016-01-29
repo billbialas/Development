@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<menu>
+	<menuItem>
+ 		<text>Setup</text>
+        <roles></roles>
+
+        <url>setup.aspx</url> 
+ 	</menuItem><menuItem>
+  		<text>User</text>
+        <roles>user,Administrator,GOD</roles>
+        <url>usermaint.aspx?search=*&amp;role=*&amp;status=*</url>
+       	
+	</menuItem>
+   <menuItem>
+ 		<text>Company</text>
+        <roles>Administrator,GOD</roles>
+
+        <url>Companymaint.aspx</url> 
+ 	</menuItem>
+ 	
+    <menuItem>
+        <text>Templates</text>
+        <roles>user,Administrator,GOD</roles>
+        <url>emailmaint.aspx?search=*</url>
+    </menuItem>
+    <menuItem>
+ 		<text>Dropdowns</text>
+        <roles>user,Administrator,GOD</roles>
+        <url>leaddropdowns.aspx</url>
+       
+ 	</menuItem>
+    <menuItem>
+        <text>Images</text>
+        <roles>user,Administrator,GOD</roles>
+        <url>images.aspx</url>
+    </menuItem>
+    <menuItem>
+        <text>Workflows</text>
+        <roles>GOD</roles>
+        <url>workflow.aspx</url>
+    </menuItem>
+    <menuItem>
+        <text>Passwords</text>
+        <roles>user,Administrator,GOD</roles>
+        <url>admanager.aspx?source=lsinfo</url>
+    </menuItem>
+     <menuItem>
+        <text>Sys Msgs</text>
+        <roles>GOD</roles>
+        <url>miscsys.aspx</url>
+    </menuItem>	
+     <menuItem>
+        <text>Sys Help</text>
+        <roles>GOD</roles>
+        <url>helpsys.aspx</url>
+    </menuItem>	
+     <menuItem>
+        <text>Cart Setup</text>
+        <roles>Shopcart,GOD</roles>
+        <url>cartsys.aspx</url>
+    </menuItem>	
+    
+    <menuItem>
+  		<text>Help</text>
+  		<url>help.aspx</url>
+	</menuItem>
+	<menuItem>
+  		<text>Exit Setup</text>
+        <roles>Administrator,user,GOD</roles>
+
+        <url>default.aspx</url>
+	</menuItem>
+	
+ 	
+</menu> 

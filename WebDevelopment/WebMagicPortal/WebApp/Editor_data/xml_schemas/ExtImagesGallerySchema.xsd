@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="name">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="name" type="name" />
+  <xs:simpleType name="path">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="path" type="path" />
+  <xs:simpleType name="width">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="width" type="width" />
+  <xs:simpleType name="height">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="height" type="height" />
+  <xs:simpleType name="prefix">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="prefix" type="prefix" />
+  <xs:simpleType name="title">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="title" type="title" />
+  <xs:complexType name="gallery">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="file" type="file" />
+      <xs:element name="folder" type="folder" />
+    </xs:choice>
+    <xs:attribute name="name" type="name" use="required" />
+    <xs:attribute name="prefix" type="prefix" use="required" />
+  </xs:complexType>
+  <xs:complexType name="folder">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="file" type="file" />
+      <xs:element name="folder" type="folder" />
+    </xs:choice>
+    <xs:attribute name="name" type="name" use="required" />
+    <xs:attribute name="path" type="path" use="required" />
+  </xs:complexType>
+  <xs:complexType name="file">
+    <xs:attribute name="name" type="name" use="required" />
+    <xs:attribute name="path" type="path" use="required" />
+    <xs:attribute name="width" type="width" use="required" />
+    <xs:attribute name="height" type="height" use="required" />
+    <xs:attribute name="title" type="title" use="required" />
+  </xs:complexType>
+
+  <xs:element name="gallery" type="gallery" />
+</xs:schema>

@@ -1,0 +1,548 @@
+/* default styles */
+
+body, table, td {font-family: Arial, Helvetica, sans-serif, arial black;  font-size: 12px; color: #000000}
+
+body { 
+text-align:left; 
+} 
+#mainContainer { 
+margin:0 auto; 
+}  
+
+
+	body {
+		margin: 0;
+		padding: 0;
+		
+		font-family: Verdana, Arial, sans-serif;
+		font-size: small;
+		}
+	
+	#headerL {
+		padding: 15px;
+		background: #236B9E;
+		border-bottom: 0px solid #fff;
+		text-decoration: none;
+		}
+			
+	#headerL h1 {
+		padding: 0;
+		margin: 0;
+		color: #ffffff;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 299%;
+		font-variant: small-caps
+
+		}
+		
+		
+	#headerLs {
+		padding: 4px;
+		background: #ccc;
+		border-bottom: 0px solid #fff;
+		text-decoration: none;
+		
+		}
+		#headerl a {
+	color: #236B9E;
+		font-family: arial;
+	
+	}
+	
+	#headerl a:visited {
+	text-decoration: none;
+	color: #FF0000;
+}
+
+		
+	#headerLs h1 {
+		padding: 0;
+		margin: 0;
+		color: #666;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 110%;
+		font-variant: small-caps
+
+		}
+
+	#bdyL {
+		padding: 30px;
+		width: 650;
+		height: 300px;
+		background: #236B9E;
+		border-bottom: 0px solid #000000;
+		text-decoration: none;
+		}
+		
+	#bdyL h1 {
+		padding: 0;
+		margin: 0;
+		color: #ffffff;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 95%;
+		position: relative;
+	    top: .5em;
+	
+		}
+
+	#bdyL h2 {
+		padding: 0;
+		margin: 0;
+		color: #666;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 150%;
+		position: relative;
+	    bottom: .8em;
+	    font-variant: small-caps;
+	    background: #ccc;
+
+	
+		}
+	
+	#servs {
+		padding: 35px;
+		background: #fffff;
+		border-bottom: 0px solid #236B9E;
+		border-top: 0px solid #236B9E;
+		
+		text-decoration: none;
+		
+		}
+		
+	#servs h1 {
+		padding: 0;
+		margin: 0;
+		color: #ff0000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		 font-style: italic;
+		font-weight: bold;
+		text-align:center;
+		font-size: 120%;
+		text-decoration: blink;
+		}
+	
+	#servs h2 {
+		padding: 0;
+		margin: 0;
+		color: #ff0000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		 font-style: italic;
+		font-weight: bold;
+		font-size: 100%;
+		text-align: center;
+		}
+	
+	#servs h3 {
+		padding: 0;
+		margin: 0;
+		color: #ff0000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		 font-style: italic;
+		font-weight: bold;
+		text-align:center;
+		font-size: 80%;
+		}
+	
+
+		}
+	
+	/* navigation */
+	
+	#nav {
+		float: left;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		background: #ccc;
+		border-bottom: 1px solid #999;
+		}
+	
+	#nav li { 
+		float: left;
+		margin: 0;
+		padding: 0;
+		font-variant: small-caps
+
+		}
+	
+	#nav a {
+		float: left;
+		display: block;
+		padding: 6px 30px 6px 5px;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 90%;
+		color: #666;
+
+		background: #ccc url(../images/nav_slant.gif) no-repeat top right;
+		}
+	
+	#nav #nav-1 a {
+		padding-left: 20px;
+		font-variant: small-caps
+
+		}
+	
+	#nav a:hover {
+		color: #000;
+		}
+		
+	
+	
+	/* more */
+	
+	ul#more {
+		clear: left;
+		margin-top: 60px;
+		}
+		
+	#footer {
+		padding: .75px;
+		background: #236B8E;
+		border-bottom: 0px solid #000000;
+		}
+    #footer h1{
+		font-size: 90%;
+		color: #ffffff;
+		}
+		
+#fieldtitles {font-size: 14px; ; color: #000000}
+#fieldtitles TD {font-size: 12px; ; color: #000000;font-weight: bold}
+	
+		
+div.idleToolTip {
+      display: none;
+      visibility:hidden;
+   }
+   div.activeToolTip {
+      display: inline;
+      visibility:visible;
+      background-color:yellow;
+      border:1px solid black;
+      font-size: 11px;
+   }
+   
+   div.idleToolTipA {
+      display: none;
+      visibility:hidden;
+   }
+   div.activeToolTipA{
+      display: inline;
+      visibility:visible;
+      background-color:yellow;
+      border:1px solid black;
+      font-size: 15px;
+
+		
+
+.pageTitle {font-size: 18px; font-weight: bold; color: #856100}
+.subTitle {font-size: 14px; font-weight: bold; color: #856100}
+.small {font-size: 9px;}
+.hp {line-height: 1.5; }
+
+/*schedule a showing button*/
+.ssb {text-align: center; font-weight: bold;  color: #FFFFFF; text-transform: uppercase}
+a.ssb {color:#FFFFFF; text-decoration:none;text-align: center; font-weight: bold;  text-transform: uppercase}
+a.ssb:active {color:#FFFFFF; text-decoration:none;text-align: center; font-weight: bold; text-transform: uppercase}
+a.ssb:visited {color:#FFFFFF; text-decoration:none;text-align: center; font-weight: bold; text-transform: uppercase}
+a.ssb:hover {color:#000000; text-decoration:none;text-align: center; font-weight: bold;  text-transform: uppercase}
+
+.tblDrpShdw {BORDER-TOP: 1px solid #606FB9; BORDER-LEFT: 2px solid #606FB9; BORDER-BOTTOM: 1px solid #606FB9; BORDER-RIGHT: 2px solid #606FB9}
+
+.tblpackageinfo {BORDER-TOP: 1px solid #000000; BORDER-LEFT: 1px solid #000000; BORDER-BOTTOM: 1px solid #000000; BORDER-RIGHT: 1px solid #000000}
+.tblpackageinfocell {font-size: 14px; font-weight: bold; color: #ffffff; background-color: #0035AE; BORDER-TOP: 1px solid #ffffff; BORDER-LEFT: 1px solid #ffffff;BORDER-BOTTOM: 0px solid #ffffff}
+.tblpackageinfocella {font-size: 14px; font-weight: bold; color: #ffffff; background-color: #0035AE; BORDER-TOP: 1px solid #ffffff; BORDER-LEFT: 1px solid #ffffff; BORDER-BOTTOM: 1px solid #ffffff}
+.tblpackageinfocell2 {font-size: 11px; font-weight: normal; color: #000000; background-color: #ffffff; BORDER-BOTTOM: 1px solid #ffffff; BORDER-TOP: 1px solid #0035AE}
+.tblpackageinfocell2a {font-size: 11px; font-weight: normal; color: #000000; background-color: #ffffff; BORDER-BOTTOM: 1px solid #ffffff}
+
+.hlink {font-family: arial, sans-serif; font-style: small caps}
+
+a.hlink:link {color:#ffffff; text-decoration:none; font-weight: bold}
+a.hlink:active {color:#ffffff; text-decoration:none; font-weight: bold}
+a.hlink:visited {color:#ffffff; text-decoration:none; font-weight: bold}
+a.hlink:hover {font-size: 13px; color:#FF0000; text-decoration:none; font-weight: bold}
+
+
+.tdcellhead {font-size: 12px; font-weight: bold; color: #ffffff; background-color: #606FB9}
+.tdcellheadHighlight {font-size: 12px; font-weight: bold; color: #ffffff; background-color: #606FB9}
+
+.tdresults {font-size:10px; background-color:#ffffff}
+.tdresultsNoBg {font-size:12px}
+.red {font-size:12px; color: #FF0000; font-weight: bold}
+.tdresultsNoBgSm {font-size:11px}
+.tdresultsLine {font-size:12px; background-color:#ffffff; BORDER-TOP: #C2C2C2 1px solid; padding: 1px}
+.tdresultsLineNoBg {font-size:12px; BORDER-TOP: #C2C2C2 1px solid; padding: 1px}
+
+.button {FONT-SIZE: 12px; background-color: #A38F5B; color: #ffffff; font-weight:bold}
+
+.cntform {Font-Size: 10px; color: #ff0000}
+
+.flatfeeheader {font-family: arial, sans-serif; BORDER-BOTTOM: 1px solid #000000; BORDER-TOP: 1px solid #000000; BORDER-RIGHT: 1px solid #000000;  font-size: 16px; font-weight: bold; color: #ffffff; background-color: #203DC8}
+.flatfeeheaderstart {font-family: arial, sans-serif; BORDER-BOTTOM: 1px solid #000000; BORDER-TOP: 1px solid #000000;BORDER-LEFT: 1px solid #000000; BORDER-RIGHT: 1px solid #000000; font-size: 16px; font-weight: bold; color: #ffffff; background-color: #203DC8}
+
+.flatfeecell2 {BORDER-LEFT: 1px solid #000000; BORDER-BOTTOM: 1px solid #000000; BORDER-RIGHT: 1px solid #000000; font-size: 13px; font-weight: bold; color: #203DC8; background-color: #ffffff}
+.flatfeecell3 {BORDER-BOTTOM: 1px solid #000000; BORDER-RIGHT: 1px solid #000000; font-size: 12px; font-weight: bold; color: #000000; background-color: #ffffff}
+.flatfeecell4 {BORDER-BOTTOM: 1px solid #000000; BORDER-RIGHT: 1px solid #000000; font-size: 13px; font-weight: bold; color: #000000; background-color: #c0c0c0}
+.flatfeecell5 {BORDER-BOTTOM: 1px solid #000000; BORDER-RIGHT: 1px solid #000000; font-size: 11px; font-weight: normal; color: #000000; background-color: #ffffff}
+
+.ffprice{
+font-family: arial, sans-serif;
+font-size: 18px; 
+font-weight: bold; 
+color: #000000;
+}
+
+.smallcaps
+{
+font-family: arial, sans-serif;
+font-style: small caps
+}
+
+
+.ff {
+font-family: arial, sans-serif;
+font-size: 12px; 
+font-weight: bold; 
+color: #ffffff;
+}
+a.ff:link {color:#ffffff; text-decoration:none; font-weight: bold}
+a.ff:active {color:#ffffff; text-decoration:none; font-weight: bold}
+a.ff:visited {color:#ffffff; text-decoration:none; font-weight: bold}
+a.ff:hover {font-size: 13px; color:#FF0000; text-decoration:none; font-weight: bold}
+
+.ffnoshade {
+font-family: arial, sans-serif;
+font-size: 16px; 
+font-weight: bold; 
+color: #000000;
+}
+a.ffnoshade:link {color:#000000; text-decoration:none; font-weight: bold}
+a.ffnoshade:active {color:#000000; text-decoration:none; font-weight: bold}
+a.ffnoshade:visited {color:#000000; text-decoration:none; font-weight: bold}
+a.ffnoshade:hover {font-size: 18px; color:#FF0000; text-decoration:none; font-weight: bold}
+
+.listnowtitle {
+font-family: arial black, sans-serif;
+font-size: 17px; 
+font-weight: normal; 
+color: #000000;
+font-variant : small-caps;
+}
+a.listnowtitle:link {color:#000000; text-decoration:none; font-weight: normal}
+a.listnowtitle:active {color:#000000; text-decoration:none; font-weight: normal}
+a.listnowtitle:visited {color:#000000; text-decoration:none; font-weight: normal}
+a.listnowtitle:hover {font-size: 17px; color:#FF0000; text-decoration:none; font-weight: normal}
+
+
+
+
+
+.ffcell {
+font-family: arial, sans-serif;
+font-size: 13px; 
+font-weight: bold; 
+color: #203DC8;
+}
+a.ffcell:link {color:#203DC8; text-decoration:none}
+a.ffcell:active {color:#203DC8; text-decoration:none}
+a.ffcell:visited {color:#203DC8; text-decoration:none}
+a.ffcell:hover { font-size: 13px; color:#ff0000; text-decoration:none}
+
+.ffcellH {
+font-family: arial, sans-serif;
+font-size: 15px; 
+font-weight: bold; 
+color: #ffffff;
+}
+a.ffcellh:link {color:#ffffff; text-decoration:none}
+a.ffcellh:active {color:#ffffff; text-decoration:none}
+a.ffcellh:visited {color:#ffffff; text-decoration:none}
+a.ffcellh:hover { font-size: 15px; color:#ff0000; text-decoration:none}
+
+
+.link1 {
+font-family: arial, sans-serif;
+font-size: 21px; 
+font-weight: bold; 
+color: #000000;
+}
+a.link1:link {color:#000000; text-decoration:none}
+a.link1:active {color:#000000; text-decoration:none}
+a.link1:visited {color:#000000; text-decoration:none}
+a.link1:hover {font-size: 22px; color:#ff0000; text-decoration:none}
+
+
+.fl {
+font-size: 22px; 
+font-weight: bold;
+background-color: #E8DCBA; 
+padding-top: 0px; 
+padding-bottom: 0px;
+padding-left: 4px;
+padding-right: 4px;
+border: 0px #A5791F dotted;
+margin-right: -4px;
+	}
+
+/*property pages*/
+
+.tdButtonBox {font-family: Arial, Helvetica, sans-serif; FONT-SIZE: 11px; background-color: #E8DCBA; BORDER-TOP: #A5791F 1px solid; BORDER-BOTTOM: #A5791F 1px solid; BORDER-RIGHT: #A5791F 1px solid; BORDER-LEFT: #A5791F 1px solid}
+.tdButtonSubBox {font-family: Arial, Helvetica, sans-serif; FONT-SIZE: 11px; background-color: #ffffff; BORDER-TOP: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-LEFT: #000000 1px solid}
+
+#PopUpTip {position:absolute; width:200px; border-top:1px solid #000000; border-left:1px solid #000000; border-right:3px solid #000000; border-bottom:3px solid #000000; background-color: #ffffff; padding: 6px; visibility: hidden; z-index:100}
+
+.propCompare1 {background-color: #E6E0D0; border-bottom: 1px solid #FFFFFF; border-top: 2px solid #FFFFFF}
+.propCompare2 {background-color: #FDF9EF}
+
+.c1button {font-family: Arial, Helvetica, sans-serif; FONT-SIZE: 13px;Height="24px" ;Width="100px"}
+
+
+
+/*agent and office pages*/
+
+.tdAgtOfcLeftNav {background-color:#E8DCBA; font-size :11px}
+
+a.AgtOfcLeftNavLink {color:#FFFFFF; text-decoration:none; font-size :11px;}
+a.AgtOfcLeftNavLink:active {color:#FFFFFF; text-decoration:none; font-size :11px;}
+a.AgtOfcLeftNavLink:visited {color:#FFFFFF; text-decoration:none; font-size :11px;}
+a.AgtOfcLeftNavLink:hover {color:#FFFFFF; text-decoration:none; font-size :11px;  }
+
+.as1 {color:#FFFFFF; text-decoration:none; font-size :11px; background-color:#856100;padding: 1px;}
+.as2 {color:#FFFFFF; text-decoration:none; font-size :11px; background-color:#000000;padding: 1px;}
+
+.as3 {color:#FFFFFF; text-decoration:none; font-size :11px; background-color:#856100;padding: 1px; border:1px solid #FFFFFF;}
+.as4 {color:#FFFFFF; text-decoration:none; font-size :11px; background-color:#000000;padding: 1px; border:1px solid #FFFFFF;}
+
+a.tdAgtOfcButtonBox {color:#ffffff; font-size:11px; text-decoration:none; font-weight:bold; padding:2px;}
+a.tdAgtOfcButtonBox:active {color:#ffffff;   font-size:11px; text-decoration none; font-weight:bold; padding:2px; }
+a.tdAgtOfcButtonBox:visited {color:#ffffff;  font-size 11px; text-decoration:none; font-weight:bold; padding:2px; }
+a.tdAgtOfcButtonBox:hover {color:#ffffff;  font-size:11px; text-decoration:none; font-weight:bold; padding:2px; }
+
+
+a.fp:link {color:#856100; text-decoration:underline}
+a.fp:active {color:#856100; text-decoration:none}
+a.fp:visited {color:#856100; text-decoration:underline}
+a.fp:hover {color:#000000; text-decoration:none}
+
+.subMenuStyle {
+		background-color: #FFFFFF;
+		padding: 4px;
+		border: 1px #000000 solid;
+		}
+
+.sm {
+	font-size: 28px;
+	font-weight: bold;
+	BORDER-RIGHT: 2px solid #606FB9; 
+	BORDER-TOP: 2px solid #606FB9; 
+	BORDER-LEFT: 2px solid #606FB9; 
+	BORDER-BOTTOM: 2px solid #606FB9;
+	background-color: #000000;
+	
+	}
+a.sm:link {color:#000000; text-decoration:none}
+a.sm:active {color:#000000; text-decoration:none}
+a.sm:visited {color:#000000; text-decoration:none}
+a.sm:hover {color:#E80B0B; text-decoration:none}
+
+.sm2 {
+	font-size: 13px;
+	color: #ffffff;
+	BORDER-RIGHT: 1px solid #4682B4; 
+	BORDER-TOP: 1px solid #4682B4; 
+	BORDER-LEFT: 1px solid #4682B4; 
+	BORDER-BOTTOM: 1px solid #ffffff;
+	background-color: #4682B4;
+	}
+
+
+.sm3 {
+	font-size: 15px;
+	color: #FFFFFF;
+	BORDER-RIGHT: 1px solid #ffffff; 
+	BORDER-TOP: 1px solid #ffffff; 
+	BORDER-LEFT: 1px solid #ffffff; 
+	BORDER-BOTTOM: 1px solid #ffffff;
+	
+	}
+.sm4 {
+	font-size: 2px;
+	color: #ff0000;
+	font-weight: bold;
+	BORDER-RIGHT: 2px solid #000000; 
+	BORDER-TOP: 2px solid #000000; 
+	BORDER-LEFT: 2px solid #606FB9; 
+	BORDER-BOTTOM: 2px solid #606FB9;
+	background-color: #000000;
+	
+	}
+
+
+
+
+
+.test {
+font-family: arial, sans-serif;
+font-size: 13px; 
+font-weight: bold; 
+color: #203DC8;
+}
+a.ffcell:link {text-decoration:none}
+a.ffcell:active {text-decoration:none}
+a.ffcell:visited { text-decoration:none}
+a.ffcell:hover {text-decoration:none}
+
+
+.tblcelltest {font-size: 11px; font-weight: bold; color: #ffffff; background-color: #ADD8E6; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 0px solid #ffffff;BORDER-BOTTOM: 2px solid #000000; BORDER-RIGHT: 0px solid #ffffff}
+.tblcelltestSelected {font-size: 11px; font-weight: bold; color: #ff0000; background-color: #4682B4; BORDER-TOP: 2px solid #000000; BORDER-LEFT: 2px solid #000000;BORDER-BOTTOM: 0px solid #000000; BORDER-RIGHT: 2px solid #000000}
+.tblcelltestA {font-size: 11px; font-weight: bold; color: #ffffff; background-color: #4682B4; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 2px solid #000000;BORDER-BOTTOM: 0px solid #000000; BORDER-RIGHT: 2px solid #000000}
+.tblcelltestb {font-size: 11px; font-weight: bold; color: #ffffff; background-color: #ffffff; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 2px solid #000000;BORDER-BOTTOM: 2px solid #000000; BORDER-RIGHT: 2px solid #000000; height:70%}
+.tblcelltestc {font-size: 1px; background-color: #ffffff; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 0px solid #000000;BORDER-BOTTOM: 2px solid #000000; BORDER-RIGHT: 0px solid #000000; height:45%}
+.tblcelltestba {font-size: 11px; font-weight: bold; color: #ffffff; background-color: #ffffff; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 2px solid #000000;BORDER-BOTTOM: 2px solid #000000; BORDER-RIGHT: 2px solid #000000; height:55%}
+
+
+.mpage {BORDER-LEFT: 2px solid #000000; BORDER-BOTTOM: 0px solid #000000; BORDER-RIGHT: 0px solid #000000; font-size: 16px;  color: #000000; background-color: #ffffff}
+.mpageA {BORDER-LEFT: 0px solid #000000; BORDER-BOTTOM: 0px solid #000000; BORDER-RIGHT: 0px solid #000000; font-size: 16px;  color: #000000; background-color: #ffffff}
+
+.tblbordera {font-size: 22px; font-weight: bold; color: #ffffff; background-color: #ffffff; BORDER-TOP: 1px solid #000000; BORDER-LEFT: 1px solid #000000;BORDER-BOTTOM: 1px solid #000000; BORDER-RIGHT: 1px solid #000000}
+
+.pgheaders {font-size: 20px; padding: 5px; font-weight: bold; color: #236B8E; font-variant: small-caps; font-family: Georgia, serif}
+.pgsubheaders {font-size: 14px; color: #ff0000;  font-family: Georgia, serif}
+
+.dg { border: #33628D 1px solid; }
+.dg TD { border: #33628D 1px solid; }
+.dgheaders { background: steelblue}
+.dgheaders TD {font-size: 14px; ; color: #ffffff; font-family: arial; background: steelblue}
+.dgheadersNOBD { background: steelblue}
+.dgheadersNOBD TD {font-size: 14px; ; color: #ffffff; font-family: arial; background: steelblue;border: steelblue 1px solid;}
+
+
+.dgitems {font-size: 2px; color: #ffffff;  background: #ffffff}
+.dgAltitems { background: #eeeeee}
+
+.dgitemsNOBD {font-size: 2px; color: #000000;  background: #ffffff; border: #ffffff 1px solid}
+.dgitemsNOBD TD {font-size: 12px; color: #000000;  background: #ffffff; border: #ffffff 1px solid;}
+
+
+
+.linkbuttons (font-weight: bold; color:#000000; font-family:arial; font-size:9pt; cursor:hand}
+a.linkbuttons:link {font-weight: bold; color:#000000; font-family:arial; font-size:9pt; cursor:hand; text-decoration:none}
+a.linkbuttons:active {color:#000000; text-decoration:none}
+a.linkbuttons:visited {color:#000000; text-decoration:none}
+a.linkbuttons:hover {color:#E80B0B; text-decoration:none}
+
+.pnllftborder {background-color: #ffffff; BORDER-left: 1px solid #000000}
+
+.frmbuttons {background-color:steelblue; color:#FFFFFF; font-family:arial; font-size:9pt;	width:90px; cursor:hand"}

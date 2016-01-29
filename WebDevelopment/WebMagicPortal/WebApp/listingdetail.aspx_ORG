@@ -1,0 +1,97 @@
+<%@ Register TagPrefix="skm2" Namespace="skmMenu" Assembly="skmMenu" %> 
+<link rel="stylesheet" href="_include/default.css" type="text/css">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+
+<%-- Script Code Block --%> 
+<script language="vb" runat="server"> 
+   sub Page_Load(source as Object, E as EventArgs) 
+    
+      if not(Page.IsPostBack) then 
+        if session("loggedin")= true 
+        		if	session("sysaccess")="Agent" then 
+           		if session("Role") = "Administrator" then 
+           			navigation2.UserRoles.Add("Administrator")
+           		else
+           			navigation2.UserRoles.Add("agent")
+           		end if
+           	end if
+           	if session("sysaccess")="Partner" Then
+        			navigation2.UserRoles.Add("Partner")
+        		end if           
+         else if session("loggedin")= true and session("sysaccess")="user" Then
+         	navigation2.UserRoles.Add("loggedin")
+         else
+           navigation2.UserRoles.Add("loggedout")
+         end if
+         
+        navigation2.DataSource = Server.MapPath("navigation2.xml") 
+        navigation2.DataBind() 
+      end if    
+      
+   end sub 
+</script> 
+
+<HTML>
+	<HEAD>
+		<title>Choice One Realty- Michigan</title>
+		<meta name="GENERATOR" Content="Microsoft Visual Studio 7.0">
+		<meta name="CODE_LANGUAGE" Content="C#">
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+	</HEAD>
+	
+	<body MS_POSITIONING="FlowLayout">
+		<form  name="listingdetail"  runat="server">
+			<asp:Panel id="pnlmain" runat="server">	
+				<table>
+					<tr>
+						<td><b><font size=3>Listing Detail</font></b></td>
+					</tr>
+				</table>
+	 			<table cellpadding=2 cellspacing=2 border=0 width=100%>
+  					<tr>
+  						<td  colspan=6 align="left"><font size=3><b>Information</b></font></td>
+  					</tr>
+  					<tr>
+  						<td>Address:</td>
+  						<td><asp:textbox id="address" runat=server size=30 /></td>
+  						<td>City:</td>
+  						<td><asp:textbox id="City" runat=server size=30 /></td>
+  						<td>State:</td>
+  						<td><asp:textbox id="State" runat=server size=30 /></td>
+  						<td>Zip:</td>
+  						<td><asp:textbox id="Zip" runat=server size=30 /></td>
+					</tr>
+  				</table><br>
+  				<table width=100% cellpadding=0 cellspacing=0>
+  					<tr>
+	<skm2:Menu 
+	 		DefaultCssClass=""
+  
+   	  id="navigation2" 
+   	  Layout="horizontal"
+   	  BackColor="#0035AE"
+   	  cursor="pointer"
+   	  Font-Names="Arial" 
+   	  font-color="#FFFFFF"
+   	  Font-Size="10pt"
+   	  MenuFadeDelay="3" 
+   	  ItemSpacing="0" 
+   	  ItemPadding="2" 
+   	  HighlightTopMenu="True"
+   	  SubmenuCSSClass="sm"
+   	  runat="server" > 
+   		<SelectedMenuItemStyle 
+      		font-size = "8"
+      		ForeColor="#ffffff" 
+      		BackColor="#DA0000"> 
+   		</SelectedMenuItemStyle> 
+	</skm2:Menu> </td>
+  					</tr>
+  					<tr height=2><td bgcolor=#ffeeee colspan=4></td>
+  					</tr>
+  				</table>
+ 			</asp:Panel> 
+		</form>
+	</body>
+</HTML>

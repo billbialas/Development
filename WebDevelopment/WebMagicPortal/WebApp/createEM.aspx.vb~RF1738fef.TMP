@@ -1,0 +1,247 @@
+imports System
+imports System.Collections
+imports System.Data.SqlClient
+imports System.ComponentModel
+imports System.Data
+imports System.Drawing
+imports System.Drawing.Color 
+imports System.Web
+imports System.Web.SessionState
+imports System.Web.UI
+imports System.Web.UI.WebControls
+imports System.Web.UI.HtmlControls
+imports System.xml
+imports System.Configuration
+imports system.Globalization
+imports system.net.mail
+Imports System.Text
+Imports FreeTextBoxControls
+
+
+Namespace PageTemplate
+    Public Class createEM
+        Inherits PageTemplate
+        Public pnlstepmain, pnlgeneral, pnlpage1, pnlpage2, pnlpage3, pnlpage3A, pnlpage4, pnlpage5, pnlpage6, pnlnotifications, pnlimages, pnltempatespre, pnladdstep As Panel
+        Public spacer0, spacer1, spacer2, spacer3, spacer3a, spacer4, spacer5, spacer6 As HtmlTableCell
+        Public subnavGen, subnavPage1, subnavPage2, subnavPage3, subnavPage3A, subnavPage4, subnavPage5, subnavPage6, subnavresp, subnavimgs As HtmlTableCell
+        Protected WithEvents Lgen, lpage1, lpage2, lpage3, lpage3A, lpage4, lpage5, lpage6, lautop, limgs, btnuseremail2, btnuseremail As LinkButton
+        Public ddemailcor As DropDownList
+        Public emtext
+
+        Private Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+
+            If Not (Page.IsPostBack) Then
+                clearsessions()
+                Fillemailcor()
+                If Session("pupclosed") = "true" Then
+                    subnav("pg1")
+                    Session("pupclosed") = "false"
+                Else
+                    subnav("General")
+                End If
+
+
+            End If
+            pagelayout()
+
+        End Sub
+        Public Sub clearsessions()
+
+        End Sub
+        Sub btn_Gen(ByVal sender As Object, ByVal e As EventArgs)
+            subnav("General")
+        End Sub
+
+        Sub btn_pg1(ByVal sender As Object, ByVal e As EventArgs)
+            subnav("pg1")
+        End Sub
+
+        Sub btn_pg2(ByVal sender As Object, ByVal e As EventArgs)
+            Subnav("pg2")
+        End Sub
+
+        Sub btn_pg3(ByVal sender As Object, ByVal e As EventArgs)
+            Subnav("pg3")
+        End Sub
+
+        Sub btn_pg3A(ByVal sender As Object, ByVal e As EventArgs)
+            Subnav("pg4")
+        End Sub
+
+        Sub btn_pg4(ByVal sender As Object, ByVal e As EventArgs)
+            Subnav("pg4")
+        End Sub
+
+        Sub btn_pg5(ByVal sender As Object, ByVal e As EventArgs)
+            Subnav("pg5")
+        End Sub
+
+        Sub btn_pg6(ByVal sender As Object, ByVal e As EventArgs)
+            Subnav("pg6")
+        End Sub
+
+        Sub subnav(ByVal button As String)
+            Dim clickedbutton As String = button
+
+            'Set cell class
+            subnavGen.Attributes.Add("class", "tblcelltest")
+            subnavPage1.Attributes.Add("class", "tblcelltest")
+            subnavPage2.Attributes.Add("class", "tblcelltest")
+            'subnavPage3.Attributes.Add("class", "tblcelltest")
+            ' subnavPage4.Attributes.Add("class", "tblcelltest")
+            'subnavPage5.Attributes.Add("class", "tblcelltest")
+            'subnavPage6.Attributes.Add("class", "tblcelltest")
+
+            'Set button font color
+            Lgen.ForeColor = System.Drawing.Color.Black
+            lpage1.ForeColor = System.Drawing.Color.Black
+            lpage2.ForeColor = System.Drawing.Color.Black
+            'lpage3.ForeColor = System.Drawing.Color.Black
+            'lpage4.ForeColor = System.Drawing.Color.Black
+            'lpage5.ForeColor = System.Drawing.Color.Black
+            'lpage6.ForeColor = System.Drawing.Color.Black
+
+            'Set spacers
+            spacer0.Visible = True
+            spacer1.Visible = True
+            spacer2.Visible = True
+            'spacer3.Visible = True
+            'spacer4.Visible = True
+            'spacer5.Visible = True
+            'spacer6.Visible = True
+
+
+            'Set Panels
+            pnlgeneral.Visible = False
+            pnlpage1.Visible = False
+            pnlpage2.Visible = False
+            pnlpage3.Visible = False
+            pnlpage4.Visible = False
+            pnlpage5.Visible = False
+            pnlpage6.Visible = False
+
+            If clickedbutton = "General" Then
+                subnavGen.Attributes.Add("class", "tblcelltestSelected")
+                Lgen.ForeColor = System.Drawing.Color.White
+                spacer0.Visible = True
+                pnlgeneral.Visible = True
+            ElseIf clickedbutton = "pg1" Then
+                subnavPage1.Attributes.Add("class", "tblcelltestSelected")
+                lpage1.ForeColor = System.Drawing.Color.White
+                spacer0.Visible = True
+                spacer1.Visible = True
+                pnlpage1.Visible = True
+            ElseIf clickedbutton = "pg2" Then
+                subnavPage2.Attributes.Add("class", "tblcelltestSelected")
+                lpage2.ForeColor = System.Drawing.Color.White
+                spacer0.Visible = True
+                spacer1.Visible = True
+                pnlpage2.Visible = True
+            ElseIf clickedbutton = "pg3" Then
+                subnavPage3.Attributes.Add("class", "tblcelltestSelected")
+                lpage3.ForeColor = System.Drawing.Color.White
+                spacer0.Visible = True
+                spacer1.Visible = True
+                spacer2.Visible = True
+                pnlpage3.Visible = True
+            ElseIf clickedbutton = "pg4" Then
+                subnavPage4.Attributes.Add("class", "tblcelltestSelected")
+                lpage4.ForeColor = System.Drawing.Color.White
+                pnlpage4.Visible = True
+            ElseIf clickedbutton = "pg5" Then
+                subnavPage5.Attributes.Add("class", "tblcelltestSelected")
+                lpage5.ForeColor = System.Drawing.Color.White
+                pnlpage5.Visible = True
+            ElseIf clickedbutton = "pg6" Then
+                subnavPage6.Attributes.Add("class", "tblcelltestSelected")
+                lpage6.ForeColor = System.Drawing.Color.White
+                pnlpage6.Visible = True
+            Else
+                subnavGen.Attributes.Add("class", "tblcelltestSelected")
+                Lgen.ForeColor = System.Drawing.Color.White
+                spacer0.Visible = False
+                pnlgeneral.Visible = True
+            End If
+        End Sub
+
+        Sub savead(ByVal sender As Object, ByVal e As EventArgs)
+
+        End Sub
+
+        Sub Fillemailcor()
+            Dim myConnection As New SqlConnection(ConfigurationSettings.AppSettings("ConnectionString"))
+            Dim myCommand As String = "Select *, convert(varchar(20),email_date,101) as 'emdate' " _
+        & "from tbl_emails " _
+        & "join tbl_xwalk on tbl_xwalk_pk = email_stat " _
+        & "where x_descr <> 'Do Not Use' " _
+        & "and ((email_uid='" & Session("userid") & "' ) " _
+        & "or (x_descr='Company Wide' and email_co='" & Session("company_pk") & "') " _
+        & "or (x_descr='System Wide')) order by email_name"
+            Dim objCmd As New SqlCommand(myCommand, myConnection)
+            Dim dataReader As SqlDataReader = Nothing
+            Try
+                myConnection.Open()
+                dataReader = objCmd.ExecuteReader()
+                ddemailcor.DataSource = dataReader
+                ddemailcor.DataTextField = "email_name"
+                ddemailcor.DataValueField = "email_tbl_pk"
+                ddemailcor.DataBind()
+            Catch exc As System.Exception
+                Response.Write(exc.ToString())
+            Finally
+                myConnection.Dispose()
+            End Try
+            ddemailcor.Items.Insert(0, New ListItem("Select..", "9999"))
+            'ddemailcor.Items.Insert(0, New ListItem("Add New", "99992"))
+            ddemailcor.Items.Insert(1, New ListItem("Clear", "99992"))
+
+        End Sub
+
+        Sub clrtxtbox(ByVal Source As System.Object, ByVal e As System.EventArgs)
+            emtext.content = ""
+
+        End Sub
+        Sub tempreview(ByVal Source As System.Object, ByVal e As System.EventArgs)
+
+            Response.Write("<script>window.open" & _
+                    "('templatepreview.aspx?id=" & ddemailcor.SelectedItem.Value & "','_new', 'width=800,height=500');</script>")
+
+        End Sub
+
+
+
+
+        'Page Layout
+        Public Sub pagelayout()
+            layout.Width = System.Configuration.ConfigurationManager.AppSettings("ScreenWidth")
+            leftNav.Width = System.Configuration.ConfigurationManager.AppSettings("ScreenLeftNav")
+            body.Height = System.Configuration.ConfigurationManager.AppSettings("ScreenBodyHeight")
+            body.Width = System.Configuration.ConfigurationManager.AppSettings("ScreenBodyWidth")
+            layout.Border = System.Configuration.ConfigurationManager.AppSettings("ScreenBorder")
+            footer.Controls.Add(LoadControl(System.Configuration.ConfigurationManager.AppSettings("ScreenFooter")))
+            Header.Controls.Add(LoadControl(System.Configuration.ConfigurationManager.AppSettings("ScreenHeader")))
+            leftNav.Controls.Add(LoadControl(System.Configuration.ConfigurationManager.AppSettings("ScreenLeftNav")))
+            MiddleNav.Controls.Add(LoadControl(System.Configuration.ConfigurationManager.AppSettings("ScreenmiddleNav")))
+
+            body.VAlign = "top"
+            leftNav.VAlign = "top"
+
+            'LeftNav.Controls.Add(new LiteralControl("Some text."))
+            'rightNav.VAlign = "top"           
+            'adjust size of LeftNav (just for the heck of it)           
+
+            'LeftNav.Controls.Add(LoadControl("navigation.ascx"));
+            'LeftNav.Controls.Add(new LiteralControl("Some text."));
+
+            'adjust size of LeftNav (just for the heck of it)
+            'LeftNav.Width = "100";
+
+            'RightNav.Controls.Add(LoadControl("quicklink1.ascx"))
+            'MiddleNav.Controls.Add(LoadControl("userid.ascx"))
+
+        End Sub
+
+
+
+    End Class
+End Namespace

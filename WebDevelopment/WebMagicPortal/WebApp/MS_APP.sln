@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MS_APP", "\\c1-spongebob2\websites\Development\MS_APP\", "{0F5EFB1F-DDB0-4C8B-BD16-90F9A7F0CA7C}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "MS_APP"
+		SccAuxPath = "http://70.88.127.205/VaultService"
+		SccLocalPath = "5~178fea09-2d7b-4422-a3a5-666c0739d93c"
+		SccProvider = "SourceGear Vault Visual Studio 2005 Client:{1EA47954-8515-402d-82D9-B5C332120A8D}"
+		TargetFramework = "2.0"
+		Debug.AspNetCompiler.VirtualPath = "/MS_APP"
+		Debug.AspNetCompiler.PhysicalPath = "\\c1-spongebob2\websites\Development\MS_APP\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\MS_APP\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/MS_APP"
+		Release.AspNetCompiler.PhysicalPath = "\\c1-spongebob2\websites\Development\MS_APP\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\MS_APP\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "56214"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(VaultVsipSolution-v2) = preSolution
+		VaultHost = http://70.88.127.205/VaultService
+		VaultRepositoryID = 5
+		VaultRepositoryGUID = 178fea09-2d7b-4422-a3a5-666c0739d93c
+		ProjectCount = 1
+		ProjectRelativeDiskPath1 = \\c1-spongebob2\websites\development\ms_app\
+		ProjectRelativeReposPath1 = ms_app
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F5EFB1F-DDB0-4C8B-BD16-90F9A7F0CA7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F5EFB1F-DDB0-4C8B-BD16-90F9A7F0CA7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

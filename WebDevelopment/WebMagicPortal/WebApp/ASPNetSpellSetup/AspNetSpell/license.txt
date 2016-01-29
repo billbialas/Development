@@ -1,0 +1,35 @@
+License Agreement
+
+ASPSpellCheck.com hereby grants you a non-exclusive license to the ASPSpellCheck Software Component (the Software).  By downloading or using the Software, the Licensee agrees not to utilize the software in a manner which is disparaging to ASPSpellCheck.com, and not to rent, lease or otherwise transfer rights to the Software.
+ 
+The Licensee agrees that no attempt will be made by the Licensee or associated parties to translate, reverse engineer, modify, decompile, disassemble or distribute the Software.
+ 
+License terms are offered on the following terms, as purchased. If no purchase or insufficient purchase has been made then the Free Trial License terms apply.
+ 
+
+Free Trial License - Allows the use of the TRIAL VERSION of the software for private evaluation purposes only.  The software should not be used for public or commercial use of any kind.
+ 
+Single Website License - Allows the use of the software on any number of web / intranet pages belonging to a single domain.
+ 
+Single Server License - This license allows the usage of the software on any number of web / intranet pages for any number of domains located on a single server.
+ 
+Enterprise License - This license allows the usage of the software on any number of web / intranet pages for any number of domains located on any number of servers belonging to one company or organization.
+ 
+ 
+UPGRADES
+If a new release of the software is produced within 12 months from the date of purchase then you will be entitled to a free upgrade.  This license does not grant you any right to any enhancement or update beyond the initial 12 month period, commencing from the date of purchase.
+ 
+COPYRIGHT
+Title, ownership rights, and intellectual property rights in and to the Software shall remain with ASPSpellCheck.com. The Software is protected by the international copyright laws. Title, ownership rights, and intellectual property rights in and to the content accessed through the Software is the property of the applicable content owner and may be protected by applicable copyright or other law. This License gives you no rights to such content.
+ 
+LIMITATION OF LIABILITY.
+THIS SOFTWARE IS PROVIDED "AS IS," WITHOUT A WARRANTY OF ANY KIND. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY EXCLUDED. ASPSPELLCHECK.COM AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THE SOFTWARE OR ITS DERIVATIVES. IN NO EVENT WILL ASPSPELLCHECK.COM  OR ITS LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE SOFTWARE, EVEN IF ASPSPELLCHECK.COM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+ 
+MISCELLANEOUS
+This software is not designed or intended for use in on-line control of aircraft, air traffic, aircraft navigation or aircraft communications; or in the design, construction, operation or maintenance of any nuclear facility. Licensee represents and warrants that it will not use or redistribute the Software for such purposes.
+ 
+
+
+
+
+

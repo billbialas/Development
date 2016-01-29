@@ -1,0 +1,308 @@
+/* default styles */
+
+body, table, td {font-family: Arial, Helvetica, sans-serif, arial black;  font-size: 12px; color: #000000}
+body {
+		margin: 0;
+		padding: 0;
+		text-align:left; 
+		font-family: Verdana, Arial, sans-serif;
+		font-size: small;
+		}
+
+#header {
+		padding: 8px;
+		background: #006295;
+		border-bottom: 0px solid #000000;
+		text-decoration: none
+		margin: 0;
+		}
+		
+#headerA {
+		padding: 8px;
+		background: #236B9E;
+		border-bottom: 0px solid #000000;
+		text-decoration: none
+		margin: 0;
+		}
+
+#headerPost {
+		padding: 8px;
+		background: #006295;
+		border-bottom: 0px solid #000000;
+		text-decoration: none;
+		margin: 0;
+		}
+				
+	#header h1 {
+		padding: 0;
+		margin: 0;
+		color: #ffffff;
+		font-variant: small-caps;
+		font-family: Georgia, serif;
+		font-style: italic;
+		font-weight: bold;
+		font-size: 240%
+		}
+		
+	#headerPOST h1 {
+		padding: 0;
+		margin: 0;
+		color: #ffffff;
+		font-variant: small-caps;
+		font-family: Georgia, serif;
+		font-style: italic;
+		font-weight: bold;
+		font-size: 275%
+		}
+		
+		#header h2 {
+	
+		position: relative;
+		top: 0.3em;
+		color: #98B1C4;
+		font-size: 0.9em
+		}
+
+		#headerPost h2 {
+	
+		position: relative;
+		top: 0.3em;
+		color: #98B1C4;
+		font-size: 1.0em
+		}
+	
+#infobar {
+		padding: 0px;
+		background: #98B1C4;
+		border-bottom: 0px solid #000000;
+		text-decoration: none
+		margin: 0;
+		}
+
+#infobar h1 {
+		padding: 0;
+		margin: 0;
+		color: #333333;
+		font-size: 104%;
+				font-variant: small-caps;
+font-family: Georgia;
+		
+		
+		}
+	
+	#footer {
+		padding: 1px;
+		background: #98B1C4;
+		border-bottom: 0px solid #000000;
+		}
+    #footer h1{
+		font-size: 90%;
+		color: #ffffff;
+		}	
+#pic {
+	background-color: #FFFFFF;
+	
+	position: relative;
+	
+}
+
+#pic a .large {
+	border: 0px;
+	display: block;
+	height: 1px;
+	left: -1px;
+	position: absolute;
+	top: -1px;
+	width: 1px;background-color: #FFFFFF;
+}
+
+#pic a img {
+	border: 0;
+}
+
+#pic a.p1, #pic a.p1:visited {	
+	text-decoration: none;	
+}
+
+#pic a.p1:hover {
+	background-color: #8C97A3;
+	color: #000000;
+	text-decoration: none;
+}
+
+#pic a.p1:hover .large {
+	border: 0px solid #000000;
+	display: block;
+	height: 133px;
+	left: 150px;
+	position: absolute;
+	top: -60px;
+	width: 100px;
+}
+
+
+		
+div.idleToolTip {
+      display: none;
+      visibility:hidden;
+   }
+   div.activeToolTip {
+      display: inline;
+      visibility:visible;
+      background-color:yellow;
+      border:1px solid black;
+      font-size: 13px;
+   }
+   
+   div.idleToolTipA {
+      display: none;
+      visibility:hidden;
+   }
+   div.activeToolTipA{
+      display: inline;
+      visibility:visible;
+      background-color:yellow;
+      border:1px solid black;
+      font-size: 15px;
+}
+
+
+
+.DGlinks A:link, .DGlinks A:visited, .DGlinks A:active, .DGlinks A:hover
+{
+    color: #ff0000;
+    font-size: 10pt;
+    text-decoration:none;
+}
+
+	#bdyL {
+		padding: 30px;
+		width: 650;
+		height: 300px;
+		background: #236B9E;
+		border-bottom: 0px solid #000000;
+		text-decoration: none;
+		}
+		
+	#bdyL h1 {
+		padding: 0;
+		margin: 0;
+		color: #ffffff;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 95%;
+		position: relative;
+	    top: .5em;
+	
+		}
+
+	#bdyL h2 {
+		padding: 0;
+		margin: 0;
+		color: #666;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 150%;
+		position: relative;
+	    bottom: .8em;
+	    font-variant: small-caps;
+	    background: #ccc;
+
+	
+		}
+	
+
+.wfstepheaderA {font-size: 14px; padding: 2px; font-weight: bold; color: #000000; font-variant: small-caps; font-family: Georgia, serif}
+.wfstepheaderARED {font-size: 14px; padding: 2px; font-weight: bold; color: #ff0000; font-variant: small-caps; font-family: Georgia, serif}
+
+.pgheaders {font-size: 20px; padding: 3px; font-weight: bold; color: #006295; font-variant: small-caps; font-family: Georgia, serif}
+.pgsubheaders {font-size: 14px; color: #ff0000;  font-family: Georgia, serif}		
+		
+
+/*Sub Nav */
+.tblcelltest {font-size: 11px; font-weight: bold; color: #ffffff; background-color: #ADD8E6; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 0px solid #ffffff;BORDER-BOTTOM: 2px solid #4682B4; BORDER-RIGHT: 0px solid #ffffff}
+.tblcelltestSelected {font-size: 11px; font-weight: bold; color: #ff0000; background-color: #4682B4; BORDER-TOP: 2px solid #4682B4; BORDER-LEFT: 2px solid #4682B4;BORDER-BOTTOM: 0px solid #000000; BORDER-RIGHT: 2px solid #4682B4}
+.tblcelltestA {font-size: 11px; font-weight: bold; color: #ffffff; background-color: #4682B4; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 2px solid #000000;BORDER-BOTTOM: 0px solid #000000; BORDER-RIGHT: 2px solid #000000}
+.tblcelltestb {font-size: 11px; font-weight: bold; color: #ffffff; background-color: #ffffff; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 2px solid #4682B4;BORDER-BOTTOM: 2px solid #4682B4; BORDER-RIGHT: 2px solid #4682B4; height:65%}
+.tblcelltestc {font-size: 1px; background-color: #ffffff; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 0px solid #000000;BORDER-BOTTOM: 2px solid #4682B4; BORDER-RIGHT: 0px solid #000000; height:45%}
+.tblcelltestba {font-size: 11px; font-weight: bold; color: #ffffff; background-color: #ffffff; BORDER-TOP: 0px solid #000000; BORDER-LEFT: 2px solid #000000;BORDER-BOTTOM: 2px solid #000000; BORDER-RIGHT: 2px solid #000000; height:55%}
+
+
+/*Buttons*/
+
+.frmbuttons {background-color:steelblue; color:#FFFFFF; font-family:arial; font-size:9pt;	width:90px; cursor:hand;}
+.frmbuttonsLG {background-color:steelblue; color:#FFFFFF; font-family:arial; font-size:9pt;	width:110px; cursor:hand}
+.frmbuttonsSF {background-color:steelblue; color:#FFFFFF; font-family:arial; font-size:9pt;	width:80px; cursor:hand}
+.frmbuttonsLGSF {background-color:steelblue; color:#FFFFFF; font-family:arial; font-size:8pt;	width:110px; cursor:hand}
+.frmbuttonsXLG {background-color:steelblue; color:#FFFFFF; font-family:arial; font-size:9pt;	width:120px; cursor:hand}
+
+
+.linkbuttons {font-weight: bold; color:#000000; font-family:arial; font-size:9pt; cursor:hand ; text-decoration:none }
+a.linkbuttons:link {font-weight: bold; color:#000000; font-family:arial; font-size:9pt; cursor:hand; text-decoration:none}
+a.linkbuttons:active {color:#000000; text-decoration:none}
+a.linkbuttons:visited {color:#000000; text-decoration:none}
+a.linkbuttons:hover {color:#E80B0B; text-decoration:none}
+
+.linkbuttonsRed {font-weight: bold; color:#E80B0B; font-family:arial; font-size:9pt; cursor:hand ; text-decoration:none }
+a.linkbuttonsRed:link {font-weight: bold; color:#E80B0B; font-family:arial; font-size:9pt; cursor:hand; text-decoration:none}
+a.linkbuttonsRed:active {color:#E80B0B; text-decoration:none}
+a.linkbuttonsRed:visited {color:#E80B0B; text-decoration:none}
+a.linkbuttonsRed:hover {color:#000000; text-decoration:none}
+
+.linkbuttonsRedX {font-weight: bold; color:#E80B0B; font-family:arial; font-size:11pt; cursor:hand ; text-decoration:none }
+a.linkbuttonsRedX:link {font-weight: bold; color:#E80B0B; font-family:arial; font-size:11pt; cursor:hand; text-decoration:none}
+a.linkbuttonsRedX:active {color:#E80B0B; text-decoration:none}
+a.linkbuttonsRedX:visited {color:#E80B0B; text-decoration:none}
+a.linkbuttonsRedX:hover {color:#000000; text-decoration:none}
+
+.linkbuttonsWhite {font-weight: bold; color:#ffffff; font-family:arial; font-size:10pt; cursor:hand ; text-decoration:none }
+a.linkbuttonsWhite:link {font-weight: bold; color:#ffffff; font-family:arial; font-size:10pt; cursor:hand; text-decoration:none}
+a.linkbuttonsWhite:active {color:#ffffff; text-decoration:none}
+a.linkbuttonsWhite:visited {color:#ffffff; text-decoration:none}
+a.linkbuttonsWhite:hover {color:#ff0000; text-decoration:none}
+
+/*Data Grids */
+.dg { border: #33628D 1px solid }
+.dgw { border: #ffffff 1px solid }
+.dg TD { border: #33628D 1px solid }
+.dgw TD { border: #ffffff 1px solid }
+.dgheaders { background: #98B1C4}
+.dgheadersw { font-size: 14px; font-family: arial;background: #98B1C4}
+.dgheaders TD {font-size: 13px; ; color: #333333; font-family: arial; background: #98B1C4;font-weight:bold;text-decoration:none}
+.dgheaders A {font-size: 13px; ; color: #333333; font-family: arial; background: #98B1C4;font-weight:bold;text-decoration:none}
+.dgheaders A:link {font-size: 13px; ; color: #333333; font-family: arial; background: #98B1C4;font-weight:bold;text-decoration:none}
+.dgheaders A:active {font-size: 13px; ; color: #333333; font-family: arial; background: #98B1C4;font-weight:bold;text-decoration:none}
+
+.dgheaders A:visited {font-size: 13px; ; color: #333333; font-family: arial; background: #98B1C4;font-weight:bold;text-decoration:none}
+
+.dgheaders A:hover {font-size: 13px; ; color: #ff0000; font-family: arial; background: #98B1C4;font-weight:bold;text-decoration:none}
+
+
+
+.dgheadersW TD {font-size: 14px; ; font-weight: bold;color: #333333; font-family: arial; background: #98B1C4}
+.dgheadersNOBD { background: #98B1C4e}
+.dgheadersNOBD TD {font-size: 14px; ; color: #333333; font-family: arial; background: #98B1C4;border: #98B1C4 0px solid}
+
+.dgitems {font-size: 2px; color: #000000;  background: #ffffff}
+.dgitemsW {font-size: 2px; color: #000000;  background: #ffffff; }
+.dgitems td {font-size: 12px; color: #000000;  background: #ffffff; }
+.dgitemsW td {font-size: 14px; color: #000000;  background: #ffffff; }
+
+.dgAltitems { background: #E0E0E0}
+.dgAltitemsW {font-size: 17px; background: #ffffff}
+.dgAltitemsW td {font-size: 14px; background: #ffffff}
+.dgitemsNOBD {font-size: 12px; color: #000000;  background: #ffffff; border: #ffffff 1px solid}
+.dgitemsNOBD TD {font-size: 12px; color: #000000;  background: #ffffff; border: #ffffff 1px solid}
+
+.LeadDrops {font-size: 10px;font-weight:bold;}
+.LeadDropsNoBold {font-size: 11px;font-weight:normal;}
+/*Panels */
+.pnllftborder {background-color: #ffffff; BORDER-left: 1px solid #000000}
+
+.test { border-right: 1px solid #4C88BE;}
+
+.tblborder {border: 1px solid #000000;}
+.tblborderPost {border: 1px solid #000000;padding:3;}
+.tblborderbottom {border-bottom: 1px solid #000000;}

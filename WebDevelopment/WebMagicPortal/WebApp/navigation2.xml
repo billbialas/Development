@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<menu>
+	<menuItem>
+  		<text>Home</text> 
+   	<url>default.aspx</url>
+	</menuItem>
+	<menuItem>
+ 		<text>Leads</text>
+    	<roles>Broker,Agent,Administrator,Partner,GOD</roles>
+  		<url>leads.aspx?search=*&amp;leadtype=*&amp;status=*&amp;constatus=*&amp;assignedto=*&amp;assignedby=*&amp;adcode=*&amp;source=nav&amp;entrysource=*&amp;program=*&amp;mprogram=*</url> 
+ 	</menuItem>
+	<menuItem>
+ 		<text>ADs</text>
+    	<roles>agent,Broker,Administrator,Partner,GOD</roles>
+    	<url>Admanager.aspx?clr=true</url> 
+ 	</menuItem>
+ 	<menuItem>
+ 		<text>Brands</text>
+    	<roles>Branding,GOD</roles>
+    	<url>Admanager.aspx?source=rspmgr</url> 
+ 	</menuItem>
+ 	<menuItem>
+ 		<text>Emails</text>
+    	<roles>Broker,Agent,Administrator,Partner,GOD</roles>
+    	<url>emmanager.aspx</url> 
+ 	</menuItem>
+ 	
+ 	<menuItem>
+ 		<text>Setup</text>
+    	<roles>user,Administrator,GOD</roles>
+  		<url>setup.aspx</url> 
+ 	</menuItem>
+    
+    <menuItem>
+        <text>Bug Report</text>
+        <roles>Beta,GOD</roles>
+        <url>bugreport.aspx</url>
+    </menuItem>
+     <menuItem>
+        <text>AutoPosts</text>
+        <roles>GOD</roles>
+        <url>autopost.aspx</url>
+    </menuItem>
+    <menuItem>
+  		<text>Help</text>
+  		<url>help.aspx</url>
+	</menuItem>
+    
+    <menuItem>
+  		<text>Log Out</text>
+  		<url>logout.aspx</url>
+	</menuItem>
+    
+</menu> 

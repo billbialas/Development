@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+	<configuration>
+   	<appSettings>
+    		<add key="ConnectionString" value="server=192.168.235.9;DATABASE=choiceonedev;user id=sa;password=pat012a" />
+    		<add key="CurrentAppURL" value="http://bmsdev.gochoiceone.com" />
+    		<add key="CurrentWebURL" value="http://gimp.gochoiceone.com" /> 
+    		<add key="ScreenHeight" value="768" /> 
+    		<add key="ScreenWidth" value="1240" /> 
+    		<add key="ScreenLeftNav" value="90" /> 
+    		<add key="ScreenBodyHeight" value="450" /> 
+    		<add key="ScreenBodyWidth" value="1140" /> 
+    		<add key="ScreenBorder" value="0" /> 
+    		<add key="ScreenHeader" value="headersys.ascx" /> 
+    		<add key="ScreenLeftNav" value="navigation2.ascx" /> 
+    		<add key="ScreenLeftNavSetup" value="navigationSetup.ascx" /> 
+    		<add key="ScreenFooter" value="footer.ascx" /> 
+    			
+  		</appSettings>
+  	
+  		<system.web>
+  		
+      	<customErrors mode="Off" />
+ 			<authentication mode="Forms">
+  				<forms
+      		name="gimp.gochoiceone.com.ADAuthCookie" loginUrl="login.aspx"  protection="All" timeout="30" />
+			</authentication>
+			<authorization> 
+		 		<deny users="?" />
+  				
+			</authorization>
+	
+
+    	</system.web>
+    	<system.net>
+    	
+    		<mailSettings>
+      		<smtp from="billbialas@comcast.net">
+	        <network host="smtp.comcast.net" port="25" userName="billbialas" password="bia49401" defaultCredentials="true" />
+	      	</smtp>
+		</mailSettings>
+	</system.net>
+	 
+
+
+    	
+    	
+  	</configuration>
+   
+   

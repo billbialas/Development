@@ -1,0 +1,292 @@
+/* default styles */
+.span_half{width:315px;margin-right:30px;float:left;}
+.span_halfA{width:600px;height:400px;}
+
+
+#PG_BackGround {width:100%; float:left; background:#ffffff; padding-top:5px;height:485px;}
+#PG_BackGround .content {width:1250px; background: #ffffff ; border: 0px solid #000000; padding-top:10px; height:470px; margin-left: 10;}
+#PG_BackGround .content .sub-heading {width:60px; padding: 2px; background: #ffffff  no-repeat  ; margin-left: 0; margin-top:0;float:left;height:460px; }
+#PG_BackGround .content .sub-heading h2{
+		padding: 10px;
+		margin: 0;
+		color: #ffffff;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 140%;
+		border-bottom: 0px solid #000000;}
+
+#PG_BackGround .content .sub-headingA{width:550px; height: 450px;padding: 2px; background: #F2F2F2 no-repeat  ; margin-left: 15; margin-top:0;float:left;border: 1px solid #ccc;}
+#PG_BackGround .content .sub-headingA h2{
+		padding: 4px;
+		margin: 0;
+		color: #ffffff;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 120%;
+		font-variant: small-caps;
+			border-bottom: 0px solid #ccc;
+		font-variant: small-caps;
+		background: #236B9E no-repeat  ;
+}
+
+#PG_BackGround .content .sub-headingA h3{
+		padding: 5px;
+		margin: 0;
+		color: #fffffff;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 90%;
+}
+#PG_BackGround .content .sub-headingA h4 {
+		padding: 0px;
+		margin-left: 20;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 120%;
+		
+}
+#PG_BackGround .content .sub-detail {margin: 0; padding: 0px; background: url(../images/bk1.jpg) no-repeat ; width:800px;height=400px;}
+
+
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: Verdana, Arial, sans-serif;
+		font-size: small;
+		}
+	
+	#header {
+		padding: 15px;
+		background: #236B9E;
+		border-bottom: 1px solid #fff;
+		text-decoration: none;
+		}
+	
+	#bdy {
+		padding: 15px;
+		background: #ffffff;
+		border-bottom: 0px solid #fff;
+		text-decoration: none;
+		}
+		
+	#bdy h1 {
+		padding: 0px;
+		margin: 0;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 140%;
+		}
+	
+	#servs {
+		padding: 15px;
+		background: #f2f2f2;
+		border: 1px solid #000000;
+		text-decoration: none;
+		margin-left:750;
+		width:480;
+		height:420;
+		}
+
+	#servsPG {
+		padding: 0px;
+		margin: 0;
+		background: url(../images/bk1.jpg) no-repeat top ;
+		border-bottom: 0px solid #fff;
+		text-decoration: none;
+		}
+		
+	#servsPG h4 {
+		padding: 0;
+		margin: 0;
+		color: #ff0000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		 font-style: italic;
+		font-weight: bold;
+		font-size: 140%;
+		}
+	
+	
+	#servs h1 {
+		padding: 0;
+		margin: 0;
+		color: #ff0000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		 font-style: italic;
+		font-weight: bold;
+		font-size: 110%;
+		text-align:center;
+		}
+	
+	#servs h2 {
+		padding: 0;
+		margin: 0;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 90%;
+		}
+		#servs h5 {
+		padding: 0;
+		margin-left: 30;
+		color: #000000;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 103%;
+	   font-style: italic;
+	   horizontal-align:center;
+		}
+	
+	#servs h3 {
+		padding: 0;
+		margin: 0;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: underline;
+		font-weight: normal;
+		font-size: 140%;
+		}
+	
+	#header h1 {
+		padding: 0;
+		margin: 0;
+		color: #ffffff;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 299%;
+		font-variant: small-caps
+
+		}
+	#header a {
+	color: #236B9E;
+		font-family: arial;
+	
+	}
+	
+	#header a:visited {
+	text-decoration: none;
+	color: #FF0000;
+}
+
+
+	/* navigation */
+	
+	#nav {
+		float: left;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		background: #ccc;
+		border-bottom: 1px solid #999;
+		}
+	
+	#nav li { 
+		float: left;
+		margin: 0;
+		padding: 0;
+		font-variant: small-caps
+
+		}
+	
+	#nav a {
+		float: left;
+		display: block;
+		padding: 6px 30px 6px 5px;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 90%;
+		color: #666;
+
+		background: #ccc url(../images/nav_slant.gif) no-repeat top right;
+		}
+	
+	#nav #nav-1 a {
+		padding-left: 20px;
+		font-variant: small-caps
+
+		}
+	
+	#nav a:hover {
+		color: #000;
+		}
+	
+	/* more */
+	
+	ul#more {
+		clear: left;
+		margin-top: 60px;
+		}
+		
+	#footer {
+		padding: 0px;
+		background: #236B8E;
+		border-bottom: 0px solid #000000;
+		}
+	
+	#footer h1 {
+		color: #ffffff;
+		font-size: 90%;
+	   font-style: italic;
+	
+		}
+		
+
+
+	#bdyL {
+		padding: 20px;
+		width: 590;
+		height: 320px;
+		background: #ffffff;
+		border: 2px solid #236B8E;
+		text-decoration: none;
+		margin-left:20;
+		margin-top:30;
+		float:left;
+		}
+		
+	#bdyL h1 {
+		padding: 1;
+		margin: 0;
+		color: #000000;
+		font-family: Georgia, serif;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 95%;
+	    margin-left:75;
+	   float:left;
+	   vertical-align:middle;
+	   width:100;
+		}
+
+	#bdyL h2 {
+		padding: 0;
+		margin: 0;
+		color: #666;
+		font-family: arial;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 150%;
+		position: relative;
+	    bottom: .8em;
+	    font-variant: small-caps;
+	    background: #ccc;
+
+	
+		}
+		
+.disclosure-title{margin:10px 0 4px 0;}
+.toggle{padding-left:14px;background:url(http://webimages.mailchimp.com/img/disclosure-closed.png) no-repeat left center;text-decoration:none;color:#000000;}
+.toggle.active{padding-left:14px;background:url(http://webimages.mailchimp.com/img/disclosure-open.png) no-repeat left center;}
+		

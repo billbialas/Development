@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; iso-8859-1"><title>Spell Check</title>
+<style>
+
+
+body {
+color: #333333;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+background-color: #E0DFE3;
+margin-left: 0px;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+}
+#TextInput{
+width:330px;
+height:81px;
+position:absolute;
+top:20px;
+left:5px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+border-style:inset;
+border-width:1px;
+}
+#TextShow{
+cursor:text;
+padding:2px;
+width:330px;
+height:81px;
+position:absolute;
+top:20px;
+left:5px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+z-index:2;
+overflow:auto;
+background-color:#FFFFFF;
+border-style:inset;
+border-width:1px;
+}
+#Suggestions{
+width:336px;
+height:84px;
+position:absolute;
+top:127px;
+left:5px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+}
+#LanguageF{
+width:211px;
+position:absolute;
+top:216px;
+left:129px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+}
+
+#highlight{
+font-weight:bold;
+color:#FF0000;
+}
+#highlightGrammar{
+font-weight:bold;
+color:#008000;
+}
+#TextInputLab{
+position:absolute;
+top:5px;
+left:6px;
+z-index:1;
+}
+#SuggestionsLab{
+position:absolute;
+top:112px;
+left:6px;
+z-index:1;
+}
+#LanguageFLab{
+position:absolute;
+top:218px;
+left:7px;
+z-index:1;
+}
+#CheckGrammarLab{
+position:absolute;
+top:238px;
+left:25px;
+z-index:1;
+
+}
+#CheckGrammarF{
+position:absolute;
+top:234px;
+left:4px;
+z-index:1;
+
+}
+#bIG{
+position:absolute;
+top:20px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#bUE{
+position:absolute;
+top:20px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+z-index:2;
+display:none;
+}
+#bIA{
+position:absolute;
+top:54px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#bAD{
+position:absolute;
+top:85px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#bCH{
+position:absolute;
+top:127px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#bCA{
+position:absolute;
+top:159px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#bAC{
+position:absolute;
+top:190px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#bCL{
+position:absolute;
+top:256px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#bUN{
+position:absolute;
+top:256px;
+left:242px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#awayMessage
+{
+display:none;
+color: #999999;
+position:absolute;
+text-align: center;
+top:40%;
+left:0%;
+width:100%;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:12px;
+font-weight:bold;
+}
+#bOP{
+position:absolute;
+top:256px;
+left:128px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#MainForm{
+display:block;
+}
+#optptionForm{
+display:none;
+}
+#tOpt{
+position:absolute;
+top:15px;
+left:12px;
+z-index:1;
+}
+#tOla{
+position:absolute;
+top:170px;
+left:12px;
+z-index:1;
+}
+#bOOK{
+position:absolute;
+top:256px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+z-index:2;
+}
+#bOCL{
+position:absolute;
+top:256px;
+left:242px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+#bRD{
+position:absolute;
+top:118px;
+left:95px;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+width:180px;
+}
+#bRA{
+position:absolute;
+top:140px;
+left:95px;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+width:180px;
+}
+#optCaseSensitiveLab{
+position:absolute;
+top:15px;
+left:95px;
+z-index:1;
+}
+#optAllCapsLab{
+position:absolute;
+top:35px;
+left:95px;
+z-index:1;
+}
+#optWebLab{
+position:absolute;
+top:55px;
+left:95px;
+z-index:1;
+}
+#optNumericLab{
+position:absolute;
+top:75px;
+left:95px;
+z-index:1;
+}
+#optNewLineLab{
+position:absolute;
+top:95px;
+left:95px;
+z-index:1;
+}
+#optLanguages{
+width:211px;
+height:82px;
+position:absolute;
+top:170px;
+left:95px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+}
+#tSum{
+position:absolute;
+top:15px;
+left:15px;
+}
+#sdivider{
+width:100%;
+position:absolute;
+top:35px;
+}
+#tWrd{
+position:absolute;
+top:55px;
+left:15px;
+}
+#tDoc{
+position:absolute;
+top:75px;
+left:15px;
+}
+#tEdi{
+position:absolute;
+top:95px;
+left:15px;
+}
+#bOK{
+position:absolute;
+top:256px;
+left:352px;
+width:100px;;
+font-family:Tahoma, Arial, Helvetica, sans-serif;
+font-size:11px;
+height:22px;
+}
+
+</style></head><body onload="window.focus()">
+ 
+
+<div id="MyForm"">
+
+  
+  <div id="MainForm">   <textarea name="TextInput" id="TextInput" cols="30" rows="8" ></textarea>
+    <div id="TextShow">
+		ASPNetSpell is correctly installed!<br />
+	<br />
+
+	This software will become fully functional when upload to an <span id="highlight">IIS Web Server</span> - or run on <span id="highlight">localhost. </span>
+	Support for ASP must be enabled.
+
+
+</div>
+    <select name="Suggestions" id="Suggestions" size="8"  >
+<option value="1" selected="selected">1.  Upload to IIS or Localhost</option>
+<option value="2">2. Ensure ASP support is enabled</option>
+<option value="3">3. Consult the manual if you get stuck</option></select><input name="ChangeJS" id="ChangeJS" value="" type="hidden">
+    <label id="TextInputLab" for="TextInput" accesskey="Y">Not Found in Dictionary:</label>
+
+    
+    <label id="SuggestionsLab" for="Suggestions" accesskey="N">Suggestions:</label>
+    
+    <label id="LanguageFLab" for="LanguageF" accesskey="D">Dictionary language:</label>
+    
+    <input name="bCH" id="bCH" accesskey="C" value="Change" type="submit">
+    <input name="bCL" id="bCL" accesskey="X" value="Done"  type="button">
+    <input name="bIG" id="bIG" accesskey="I" value="Ignore Once" type="submit">
+    <input name="bIA" id="bIA" accesskey="G" value="Ignore All" type="submit">
+    <input name="bAD" id="bAD" accesskey="A" value="Add to Dictionary" type="submit">
+    <input name="bCA" id="bCA" accesskey="L" value="Change All" type="submit">
+
+    <input name="bAC" id="bAC" accesskey="R" value="AutoCorrect" type="submit">
+    <input name="bUN" id="bUN" accesskey="U" value="Undo" disabled="disabled" type="submit">
+    <input name="bOP" id="bOP" accesskey="O" value="Options..." type="submit">
+    <input name="bUE" id="bUE" accesskey="U" value="Undo Edit"  type="button">
+    <select name="LanguageF" id="LanguageF" >
+<option value="Deutsch" "selected">Deutsch</option>
+<option value="Dansk" "selected">Dansk</option>
+<option value="English (Australia)">English (Australia)</option>
+<option value="English (Canada)">English (Canada)</option>
+
+<option selected="true" "English (International)">English (International)</option>
+<option value="English (UK)">English (UK)</option>
+<option value="English (USA)">English (USA)</option>
+<option value="Espanol">Espanol</option>
+<option value="Francais">Francais</option>
+<option value="Italiano">Italiano</option>
+<option value="Nederlands">Nederlands</option>
+<option value="Portugues">Portugues</option>
+<option value="Svensk">Svensk</option>
+
+</select>
+
+
+    <label for="binCheckGrammar" id="CheckGrammarLab" accesskey="K">Check grammar</label>
+    <input name="CheckGrammarF" id="CheckGrammarF" value="True"  checked="checked" type="checkbox">
+    <input name="TextInputCache" id="TextInputCache" value="Ich saß am baum sass. " type="hidden">
+	
+  </div>
+</div>
+</body></html>
