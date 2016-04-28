@@ -6,9 +6,6 @@ package com.otbmedia.Model;
 public class Computer {
     private String computerMarker;
 
-    public Computer(String computerMarker) {
-        this.computerMarker = computerMarker;
-    }
 
     public String getComputerMarker() {
         return computerMarker;

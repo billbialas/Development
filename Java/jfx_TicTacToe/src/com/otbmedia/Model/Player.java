@@ -8,12 +8,6 @@ public class Player {
     private int playerWins;
     private String playerMarker;
 
-    public Player(String playerName, int playerWins, String playerMarker) {
-        this.playerName = playerName;
-        this.playerWins = playerWins;
-        this.playerMarker = playerMarker;
-    }
-
     public String getPlayerName() {
         return playerName;
     }
