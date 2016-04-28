@@ -54,11 +54,12 @@ public class KeyInput extends KeyAdapter {
                             shots ++;
                         }
                     }
-                    System.out.println(shots);
-                    if (shots <3){
-                        handler.addObject(new PlayerShot(tempObject.getX()+32, tempObject.getY()+12,ObjectId.PlayerShot, tempObject.getFacing() * 16,handler) );
-
-                    }
+                    handler.addObject(new PlayerShot(tempObject.getX()+32, tempObject.getY()+12,ObjectId.PlayerShot, tempObject.getFacing() * 16,handler) );
+//                    System.out.println(shots);
+//                    if (shots <3){
+//
+//
+//                    }
                       }
 
             }

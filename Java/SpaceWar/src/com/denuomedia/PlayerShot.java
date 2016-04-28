@@ -37,6 +37,12 @@ public class PlayerShot extends GameObject {
     }
 
     private void collision(LinkedList<GameObject> object){
+        System.out.println(this.x + "" + Game.WIDTH);
+        if (this.x> Game.WIDTH){
+            handler.removeObject(PlayerShot.this);
+        }
+
+
         for (int i=0; i<object.size();i++) {
             GameObject tempObject = object.get(i);
             if (tempObject.getId() == ObjectId.Block){
