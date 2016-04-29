@@ -1,0 +1,85 @@
+Inputs: Names (of two players), Object choice
+Outputs: Object choices
+Problem Statement: Create a program that will ask the user their names, what object they picked to race with, and the race function where both objects race eachother. While this is happening, we must keep score and determine a winner. If the user wants to stop playing, they must enter quit.
+
+Variables		Datatypes
+highestscore = int()
+name1 = str()
+name2 = str()
+shape1 = str()
+shape2 = str()
+score1 = int()
+score2 = int()
+trail1 = str()
+trail2 = str()
+index = 0
+
+Pseudocode
+1. Declare Variables
+highestscore = int()
+name1 = str()
+name2 = str()
+shape1 = str()
+shape2 = str()
+score1 = int()
+score2 = int()
+trail1 = str()
+trail2 = str()
+index = 0
+2. #gets inputs
+name1 = input("What is player 1's name?")
+name2 = input("What is player 2's name?")
+print(name1,' What shape do you want to race with? Enter monster, worm, or airplane.')
+Ishape1 = input()
+print(name2, 'What shape do you want to race with? Enter monster, worm, or airplane.')
+Ishape2 = input()
+3. #changes inputs to objects
+if Ishape1 == "worm":
+    shape1 = "_/\__/\__0>"
+elif Ishape1 == "monster":
+        shape1 = "?(??????•??)?"
+else: shape1 = " ?¯¯??¯¯(??)¯¯??¯¯’"
+
+if Ishape2 == "worm":
+    shape2 = "_/\__/\__0>"
+elif Ishape2 == "monster":
+        shape2 = "?(??????•??)?"
+else: shape2 = " ?¯¯??¯¯(??)¯¯??¯¯’"
+4.#calculates
+score1 = random.randrange(0,30,1)
+score2 = random.randrange(0,30,1)
+5.#Compare score 1 and score 2; store the higher one in highest score var
+if score1>score2:
+    highestscore = score1
+else: highestscore = score2
+6.#use while loop to start race from 0 to highest number var +_1
+while index<highestscore+1:
+    if score1>index:
+      s1char = '-'
+    elif score1 == index:
+        s1char = shape1
+    else: s1char = ' '
+
+
+    if score2>index:
+      s2char = '-'
+    elif score2 == index:
+        s2char = shape2
+    else: s2char = ' '
+7.#used to handle spacing
+    if s1char == shape1 and Ishape1 == 'airplane':
+        tabs = '\t'
+    elif s1char == shape1 and (Ishape1 == 'worm' or Ishape1 == 'monster'):
+        tabs = '\t\t'
+    else:
+        tabs = '\t\t\t\t\t'
+    print(index,'\t',s1char,tabs,' |\t',s2char)
+    index = index + 1
+
+8. Output final message
+if score1 > score2:
+    print(name1," is the winner!")
+else:
+        print(name2," is the winner!")
+        print("Current Score:\n","******\n",name1,":    ",score1,"\n",name2,":     ",score2)
+

@@ -1,0 +1,72 @@
+Inputs: none
+Outputs:  header, average price, highest/lowest price, # of houses above/below avg price, the names of the owners, the prices of houses
+Problem Statement: Create a program that will output the given set of names and house prices, calculate the average price of all houses, the highest/lowest marketed house, and the quantity of houses on the market that are below/above avg price.
+variables		Datatypes
+index = 0
+lowestprice = int(0)
+sellingprice = []
+sellingprice = [125900,115000,105900,85000,150000,155249,97500]
+avg = float()
+homeowner = ['Carson','Smith','Jackson','Swanson','Perry','Beufort','Anderson']
+aboveavg = int(0)
+belowavg = int(0)
+highestprice = int(0)
+
+pseudocode
+1. declare variables
+index = 0
+lowestprice = int(0)
+sellingprice = []
+sellingprice = [125900,115000,105900,85000,150000,155249,97500]
+avg = float()
+homeowner = ['Carson','Smith','Jackson','Swanson','Perry','Beufort','Anderson']
+aboveavg = int(0)
+belowavg = int(0)
+highestprice = int(0)
+
+2. Header
+
+print('Welcome to the Botany Bay home sales calculator.\n This program will calculate the average selling price of the homes sold\n this past year. It will then determine how many homes sold\n above average, below average, the price average, the highest priced,\n and the lowest prices homes.\n===================================\nBotany Bay Home Sales\n*********************')
+3. output all house information
+
+while index < 7:
+    print(index, '.\t',homeowner[index],'%04s' % '','\t$',sellingprice[index])
+    index +=1
+4. determine the average
+avg = (125900+115000+105900+85000+150000+155249+97500)/7
+print("\nThe average selling price is: $",avg)
+
+5. determine quantity of houses above average
+index = 0
+while index < 7:
+    if sellingprice[index] > avg:
+        aboveavg +=1
+    index +=1
+print('\nNumber of houses above average price:',aboveavg)
+
+6. determine quantity of houses below average
+index = 0
+while index < 7:
+    if sellingprice[index] < avg:
+        belowavg += 1
+    index += 1
+print('Number of houses above below price:',belowavg)
+
+7. find highest priced house
+index = 0
+highestprice = sellingprice[index]
+while index < 7:
+    if sellingprice[index]>highestprice:
+        highestprice = sellingprice[index]
+    index +=1
+print("\nThe highest priced house is: $",highestprice)
+
+8. find lowest priced house
+index = 0
+lowestprice = sellingprice[index]
+while index < 7:
+    if sellingprice[index]<lowestprice:
+        lowestprice = sellingprice[index]
+    index +=1
+print("\nThe lowest priced house is: $",lowestprice)
+

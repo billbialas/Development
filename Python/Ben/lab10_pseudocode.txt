@@ -1,0 +1,36 @@
+Problem Statement: Make a program that will output the user's item, the original price, and the discount for each day.
+Inputs: Item, original price
+Outputs: Item, Original price, discounted price, day
+Variable Name		Datatype
+items = int(0)
+days = int(0)
+discount = float()
+price = float()
+discountprice = float()
+
+
+1.Declare Variables
+items = int(0)
+days = int(0)
+discount = float()
+price = float()
+discountprice = float()
+
+2. Set the loop
+while items <= 4:
+3. Get inputs
+
+    item = input("What is your item?")
+    price = float(input("How much does your item cost?"))
+4. Display/print the header / dividers
+    print("-----------------------\n","Item Name:   ",item,"\nOriginal Cost:    ",price,"\nDay  Discount    Discount Price\n","-----------------------\n")
+5. Set the nested while loop so it calculates this every time one item/index is added
+    while days <= 5:
+6. Calculate prices
+        discountprice = price * .9
+        price = discountprice
+7. Display results
+        print("",days,"  $ ",discount, "    $ ",discountprice)
+8. Add one day so the loop continues until the fifth day is reached.
+        days = days + 1
+items + 1
